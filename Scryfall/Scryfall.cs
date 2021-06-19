@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Windows.Media.Imaging;
 
 namespace MTG.Scryfall
@@ -68,6 +69,17 @@ namespace MTG.Scryfall
             }
         }
         public bool HasTwoFaces => card_faces != null;
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum CardColors
+        {
+            W, U, B, R, G
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum CardRarity
+        {
+            common, uncommon, rare, special, mythic, bonus
+        }
     }
     public class CardSet
     {
@@ -76,6 +88,7 @@ namespace MTG.Scryfall
         public string code { get; set; }
         public string released_at { get; set; }
         public string icon_svg_uri { get; set; }
+        public SetType set_type { get; set; }
 
         public string Icon
         {
@@ -83,6 +96,36 @@ namespace MTG.Scryfall
             {
                 return icon_svg_uri;
             }
+        }
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum SetType
+        {
+            Core,
+            Expansion,
+            Masters,
+            Masterpiece,
+            From_the_vault,
+            Spellbook,
+            Premium_deck,
+            Duel_deck,
+            Draft_innovation,
+            Treasure_chest,
+            Commander,
+            Planechase,
+            Archenemy,
+            Vanguard,
+            Funny,
+            Starter,
+            Box,
+            Promo,
+            Token,
+            Memorabilia
+        }
+
+        public static SetType[] GetSetTypes()
+        {
+            return Enum.GetValues(typeof(SetType)).Cast<SetType>().ToArray();
         }
     }
 
@@ -246,20 +289,9 @@ namespace MTG.Scryfall
 
     public class CardFace
     {
-        public List<CardColors> colors { get; set; }
+        public List<Card.CardColors> colors { get; set; }
         public Dictionary<string, string> image_uris { get; set; }
         public string name { get; set; }
         public string type_line { get; set; }
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum CardColors
-    {
-        W, U, B, R, G
-    }
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum CardRarity
-    {
-        common, uncommon, rare, special, mythic, bonus
     }
 }

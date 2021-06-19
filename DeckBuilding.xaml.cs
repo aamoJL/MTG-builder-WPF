@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace MTG
 {
@@ -42,6 +43,9 @@ namespace MTG
 
             // Get collection names from a file and add them to combobox
             CardCollectionComboBox.ItemsSource = GetCollectionNames();
+
+            CardSetTypeComboBox.ItemsSource = CardSet.GetSetTypes();
+            CardSetTypeComboBox.SelectedIndex = 1;
         }
 
         private List<CardSet> GetCardSets()
@@ -172,6 +176,17 @@ namespace MTG
             {
                 CardSetImageListBox.ItemsSource = null;
             }
+        }
+        private void SetCollectionTab_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CollectionTab.IsSelected)
+            {
+                CardCollectionComboBox.ItemsSource = GetCollectionNames();
+            }
+        }
+        private void CardSetTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CardSetComboBox.ItemsSource = FilterCardSetList(GetCardSets(), new CardSet.SetType[] { (CardSet.SetType)CardSetTypeComboBox.SelectedItem });
         }
 
         private void CardImage_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -349,12 +364,9 @@ namespace MTG
             return result;
         }
 
-        private void SetCollectionTab_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private List<CardSet> FilterCardSetList(List<CardSet> setList, CardSet.SetType[] types)
         {
-            if (CollectionTab.IsSelected)
-            {
-                CardCollectionComboBox.ItemsSource = GetCollectionNames();
-            }
+            return setList.Where(x => types.Contains(x.set_type)).ToList();
         }
     }
 }
