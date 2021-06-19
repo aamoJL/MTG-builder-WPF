@@ -247,6 +247,12 @@ namespace MTG.Scryfall
     {
         [JsonProperty("data")]
         public List<Card> Data { get; set; }
+        [JsonProperty("has_more")]
+        public bool HasMore { get; set; }
+        [JsonProperty("next_page")]
+        public string NextPage { get; set; }
+        [JsonProperty("total_cards")]
+        public int TotalCards { get; set; }
     }
     public class CardSetData
     {

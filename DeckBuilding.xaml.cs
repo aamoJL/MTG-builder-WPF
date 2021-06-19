@@ -89,9 +89,22 @@ namespace MTG
         }
         private static List<Card> FetchScryfallSetCards(string searchUri)
         {
+            List<Card> cards = new();
+
             using WebClient wc = new();
+
             string json = wc.DownloadString(searchUri);
-            return JsonConvert.DeserializeObject<CardData>(json).Data;
+            CardData cardData = JsonConvert.DeserializeObject<CardData>(json);
+            cards.AddRange(cardData.Data);
+
+            while (cardData.HasMore)
+            {
+                json = wc.DownloadString(cardData.NextPage);
+                cardData = JsonConvert.DeserializeObject<CardData>(json);
+                cards.AddRange(cardData.Data);
+            }
+
+            return cards;
         }
         private static List<CollectionCard> ReadCollectionFromFile(string path)
         {
