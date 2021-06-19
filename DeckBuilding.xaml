@@ -1,0 +1,94 @@
+﻿<Window x:Class="MTG.DeckBuilding"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MTG"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DeckBuilding"
+      Background="GhostWhite">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TabControl HorizontalAlignment="Left" Width="180" Margin="5,10,0,5" Grid.Column="1" VerticalAlignment="Bottom" SelectionChanged="SetCollectionTab_SelectionChanged">
+            <TabItem Header="Sets" x:Name="SetTab">
+                <ComboBox x:Name="CardSetComboBox" SelectionChanged="CardSetComboBox_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </TabItem>
+            <TabItem Header="Collections" x:Name="CollectionTab">
+                <ComboBox x:Name="CardCollectionComboBox" SelectionChanged="CardCollectionComboBox_SelectionChanged" />
+            </TabItem>
+        </TabControl>
+        <ListBox x:Name="CardSetImageListBox" Margin="5,5,10,10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Grid.Column="1">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding PrimaryFace}" Width="250" Margin="5" MouseRightButtonUp="CardImage_MouseRightButtonUp"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                    <EventSetter Event="MouseDoubleClick" Handler="CardImage_MouseDoubleClick"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Collection" Margin="10" TextAlignment="Center" FontSize="24" VerticalAlignment="Top"/>
+            <Button x:Name="OpenCollectionButton" Grid.Row="1" Margin="10,5,0,5" HorizontalAlignment="Left" Width="50" VerticalAlignment="Top" Click="OpenCollectionButton_Click">Open...</Button>
+            <Button x:Name="NewCollectionButton" Grid.Row="1" Margin="65,5,0,5" HorizontalAlignment="Left" Width="50" Click="NewCollectionButton_Click">New...</Button>
+            <TextBlock x:Name="CollectionTextBlock" Grid.Row="2" Text="Collection not selected" Padding="3" Margin="10,0,0,0"/>
+        </Grid>
+        <Grid Grid.Row="1" Margin="10,5,5,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <ListBox x:Name="CollectionListBox" Margin="0,0,0,5">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Count}" Margin="0,0,10,0"/>
+                            <TextBlock Text="{Binding Card.name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Grid VerticalAlignment="Bottom" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Margin="0,0,2.5,0" Click="AddButton_Click">Add</Button>
+                <Button Grid.Row="0" Grid.Column="1" Margin="2.5,0,0,0" Click="RemoveButton_Click">Remove</Button>
+                <Button Grid.Row="1" Grid.Column="0" Margin="0,5,2.5,0" Click="SaveButton_Click">Save</Button>
+                <Button Grid.Row="1" Grid.Column="1" Margin="2.5,5,0,0" Click="SaveAsButton_Click">Save As...</Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
