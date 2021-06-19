@@ -118,7 +118,6 @@ namespace MTG
         {
             cardCollection.RemoveCard(card);
         }
-
         private void SaveCollection(string path)
         {
             if (cardCollection.Name == "")
@@ -139,7 +138,6 @@ namespace MTG
                 return (List<CollectionCard>)serializer.Deserialize(file, typeof(List<CollectionCard>));
             }
         }
-
         private void ChangeCollection(string path)
         {
             List<CollectionCard> cards = ReadCollectionFromFile(path);
@@ -150,6 +148,13 @@ namespace MTG
             selectedCollectionPath = path;
         }
 
+        private void SetCollectionTab_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CollectionTab.IsSelected)
+            {
+                CardCollectionComboBox.ItemsSource = GetCollectionNames();
+            }
+        }
         private void CardSetComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(CardSetComboBox.SelectedIndex == -1) { return; }
@@ -177,16 +182,13 @@ namespace MTG
                 CardSetImageListBox.ItemsSource = null;
             }
         }
-        private void SetCollectionTab_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (CollectionTab.IsSelected)
-            {
-                CardCollectionComboBox.ItemsSource = GetCollectionNames();
-            }
-        }
         private void CardSetTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CardSetComboBox.ItemsSource = FilterCardSetList(GetCardSets(), new CardSet.SetType[] { (CardSet.SetType)CardSetTypeComboBox.SelectedItem });
+        }
+        private void CollectionListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CollectionSelectedImage.Source = ((CollectionCard)CollectionListBox.SelectedItem)?.Card.PrimaryFace;
         }
 
         private void CardImage_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -222,6 +224,19 @@ namespace MTG
                 }
             }
         }
+        private void CollectionCard_MouseEnter(object sender, MouseEventArgs e)
+        {
+            CollectionCard collectionCard = ((ListBoxItem)sender).DataContext as CollectionCard;
+
+            if (collectionCard != null)
+            {
+                CollectionHoverImage.Source = collectionCard.Card.PrimaryFace;
+            }
+        }
+        private void CollectionCard_MouseLeave(object sender, MouseEventArgs e)
+        {
+            CollectionHoverImage.Source = null;
+        }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
@@ -249,7 +264,6 @@ namespace MTG
         {
             CopyCollection();
         }
-
         private void OpenCollectionButton_Click(object sender, RoutedEventArgs e)
         {
             if (cardCollection.UnsavedChanges)
@@ -279,7 +293,6 @@ namespace MTG
                 ChangeCollection(openFileDialog.FileName);
             }
         }
-
         private void NewCollectionButton_Click(object sender, RoutedEventArgs e)
         {
             if (cardCollection.UnsavedChanges)
