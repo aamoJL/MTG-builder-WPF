@@ -6,17 +6,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace MTG
@@ -26,15 +18,15 @@ namespace MTG
     /// </summary>
     public partial class DeckBuilding : Window
     {
-        string collectionsPath = "Resources/Collections/";
-        string selectedCollectionPath = "";
-        readonly CardCollection cardCollection = new CardCollection();
+        private readonly string collectionsPath = "Resources/Collections/";
+        private string selectedCollectionPath = "";
+        private readonly CardCollection cardCollection = new();
 
         public DeckBuilding()
         {
             InitializeComponent();
 
-            Directory.CreateDirectory(collectionsPath);
+            _ = Directory.CreateDirectory(collectionsPath);
 
             CollectionListBox.ItemsSource = cardCollection.Cards;
 
@@ -42,13 +34,13 @@ namespace MTG
             CardSetComboBox.ItemsSource = GetCardSets();
 
             // Get collection names from a file and add them to combobox
-            CardCollectionComboBox.ItemsSource = GetCollectionNames();
+            CardCollectionComboBox.ItemsSource = GetCollectionNames(collectionsPath);
 
             CardSetTypeComboBox.ItemsSource = CardSet.GetSetTypes();
             CardSetTypeComboBox.SelectedIndex = 1;
         }
 
-        private List<CardSet> GetCardSets()
+        private static List<CardSet> GetCardSets()
         {
             try
             {
@@ -56,7 +48,7 @@ namespace MTG
                 string json = File.ReadAllText(path);
 
                 CardSetData setBase = JsonConvert.DeserializeObject<CardSetData>(json);
-                return setBase.data;
+                return setBase.Data;
             }
             catch (IOException e)
             {
@@ -64,23 +56,21 @@ namespace MTG
                 throw;
             }
         }
-        private string[] GetCollectionNames()
+        private static string[] GetCollectionNames(string path)
         {
-            Directory.CreateDirectory(collectionsPath);
-
-            string[] files = Directory.GetFiles(collectionsPath, "*.json");
+            string[] files = Directory.GetFiles(path, "*.json");
             string[] fileNames = new string[files.Length];
 
             for (int i = 0; i < files.Length; i++)
             {
-                fileNames[i] = System.IO.Path.GetFileNameWithoutExtension(files[i]);
+                fileNames[i] = Path.GetFileNameWithoutExtension(files[i]);
             }
 
             return fileNames;
         }
-        private List<Card> GetCardsFromCollection(CardCollection collection)
+        private static List<Card> GetCardsFromCollection(CardCollection collection)
         {
-            List<Card> cards = new List<Card>();
+            List<Card> cards = new();
             foreach (CollectionCard collectionCard in collection.Cards)
             {
                 cards.Add(collectionCard.Card);
@@ -88,22 +78,26 @@ namespace MTG
 
             return cards;
         }
-        private List<Card> GetCardsFromCollection(List<CollectionCard> collectionCards)
+        private static List<Card> GetCardsFromCollection(List<CollectionCard> collectionCards)
         {
-            List<Card> cards = new List<Card>();
+            List<Card> cards = new();
             foreach (CollectionCard collectionCard in collectionCards)
             {
                 cards.Add(collectionCard.Card);
             }
             return cards;
         }
-        private List<Card> FetchScryfallSetCards(string searchUri)
+        private static List<Card> FetchScryfallSetCards(string searchUri)
         {
-            using (WebClient wc = new WebClient())
-            {
-                var json = wc.DownloadString(searchUri);
-                return JsonConvert.DeserializeObject<CardData>(json).data;
-            }
+            using WebClient wc = new();
+            string json = wc.DownloadString(searchUri);
+            return JsonConvert.DeserializeObject<CardData>(json).Data;
+        }
+        private static List<CollectionCard> ReadCollectionFromFile(string path)
+        {
+            using StreamReader file = File.OpenText(path);
+            JsonSerializer serializer = new();
+            return (List<CollectionCard>)serializer.Deserialize(file, typeof(List<CollectionCard>));
         }
 
         private void AddCardToCollection(Card card)
@@ -130,18 +124,10 @@ namespace MTG
                 cardCollection.Save(path);
             }
         }
-        private List<CollectionCard> ReadCollectionFromFile(string path)
-        {
-            using (StreamReader file = File.OpenText(path))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                return (List<CollectionCard>)serializer.Deserialize(file, typeof(List<CollectionCard>));
-            }
-        }
         private void ChangeCollection(string path)
         {
             List<CollectionCard> cards = ReadCollectionFromFile(path);
-            string collectionsName = System.IO.Path.GetFileNameWithoutExtension(path);
+            string collectionsName = Path.GetFileNameWithoutExtension(path);
 
             cardCollection.ChangeCollection(cards, collectionsName);
             CollectionTextBlock.Text = collectionsName;
@@ -152,7 +138,7 @@ namespace MTG
         {
             if (CollectionTab.IsSelected)
             {
-                CardCollectionComboBox.ItemsSource = GetCollectionNames();
+                CardCollectionComboBox.ItemsSource = GetCollectionNames(collectionsPath);
             }
         }
         private void CardSetComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -160,7 +146,7 @@ namespace MTG
             if(CardSetComboBox.SelectedIndex == -1) { return; }
             CardSet set = CardSetComboBox.SelectedItem as CardSet;
 
-            List<Card> cards = FetchScryfallSetCards(set.search_uri);
+            List<Card> cards = FetchScryfallSetCards(set.SearchUri);
             CardSetImageListBox.ItemsSource = cards;
             CardCollectionComboBox.SelectedIndex = -1;
         }
@@ -184,7 +170,7 @@ namespace MTG
         }
         private void CardSetTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CardSetComboBox.ItemsSource = FilterCardSetList(GetCardSets(), new CardSet.SetType[] { (CardSet.SetType)CardSetTypeComboBox.SelectedItem });
+            CardSetComboBox.ItemsSource = FilterCardSetList(GetCardSets(), new CardSet.CardSetType[] { (CardSet.CardSetType)CardSetTypeComboBox.SelectedItem });
         }
         private void CollectionListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -193,42 +179,28 @@ namespace MTG
 
         private void CardImage_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if(e.ChangedButton != MouseButton.Left) { return; }
-            
-            //Only left double click
-            Card card = CardSetImageListBox.SelectedItem as Card;
+            //Only double left click
+            if (e.ChangedButton != MouseButton.Left) { return; }
 
-            if (card != null)
+            if (CardSetImageListBox.SelectedItem is Card card)
             {
                 AddCardToCollection(card);
             }
         }
         private void CardImage_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Image img = sender as Image;
-            Card card = CardSetImageListBox.SelectedItem as Card;
-
-            if (img != null && card != null)
+            if (sender is Image img && CardSetImageListBox.SelectedItem is Card card)
             {
                 if (card.HasTwoFaces)
                 {
                     string currentSource = img.Source.ToString();
-                    if(card.card_faces[0].image_uris["normal"] == currentSource)
-                    {
-                        img.Source = card.SecondaryFace;
-                    }
-                    else
-                    {
-                        img.Source = card.PrimaryFace;
-                    }
+                    img.Source = card.CardFaces[0].ImageUris["normal"] == currentSource ? card.SecondaryFace : card.PrimaryFace;
                 }
             }
         }
         private void CollectionCard_MouseEnter(object sender, MouseEventArgs e)
         {
-            CollectionCard collectionCard = ((ListBoxItem)sender).DataContext as CollectionCard;
-
-            if (collectionCard != null)
+            if (((ListBoxItem)sender).DataContext is CollectionCard collectionCard)
             {
                 CollectionHoverImage.Source = collectionCard.Card.PrimaryFace;
             }
@@ -240,18 +212,14 @@ namespace MTG
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            CollectionCard card = CollectionListBox.SelectedItem as CollectionCard;
-
-            if (card != null)
+            if (CollectionListBox.SelectedItem is CollectionCard card)
             {
                 AddCardToCollection(card);
             }
         }
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            CollectionCard card = CollectionListBox.SelectedItem as CollectionCard;
-
-            if (card != null)
+            if (CollectionListBox.SelectedItem is CollectionCard card)
             {
                 RemoveCardFromCollection(card);
             }
@@ -277,16 +245,17 @@ namespace MTG
                         SaveCollection(selectedCollectionPath);
                         break;
                     case MessageBoxResult.No:
-                        break;
+                    case MessageBoxResult.None:
+                    case MessageBoxResult.OK:
                     default:
                         break;
                 }
             }
 
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new();
             openFileDialog.Filter = "Text files (*.json)|*.json|All files (*.*)|*.*";
-            string CombinedPath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), collectionsPath);
-            openFileDialog.InitialDirectory = System.IO.Path.GetFullPath(CombinedPath);
+            string CombinedPath = Path.Combine(Directory.GetCurrentDirectory(), collectionsPath);
+            openFileDialog.InitialDirectory = Path.GetFullPath(CombinedPath);
 
             if (openFileDialog.ShowDialog() == true)
             {
@@ -306,7 +275,8 @@ namespace MTG
                         SaveCollection(selectedCollectionPath);
                         break;
                     case MessageBoxResult.No:
-                        break;
+                    case MessageBoxResult.None:
+                    case MessageBoxResult.OK:
                     default:
                         break;
                 }
@@ -318,7 +288,7 @@ namespace MTG
         private void CreateNewCollection()
         {
             // Configure save file dialog box
-            SaveFileDialog dialog = new SaveFileDialog();
+            SaveFileDialog dialog = new();
             dialog.FileName = "NewCollection"; // Default file name
             dialog.DefaultExt = ".json"; // Default file extension
             dialog.InitialDirectory = Path.GetFullPath(collectionsPath);
@@ -342,7 +312,7 @@ namespace MTG
         private void CopyCollection()
         {
             // Configure save file dialog box
-            var dialog = new SaveFileDialog();
+            SaveFileDialog dialog = new();
             dialog.FileName = "CopiedCollection"; // Default file name
             dialog.DefaultExt = ".json"; // Default file extension
             dialog.InitialDirectory = Path.GetFullPath(collectionsPath);
@@ -363,7 +333,7 @@ namespace MTG
             }
         }
 
-        private MessageBoxResult UnsavedChangesDialog()
+        private static MessageBoxResult UnsavedChangesDialog()
         {
             // Ask if user wants to save last collection
             string messageBoxText = "Do you want to save changes?";
@@ -376,10 +346,9 @@ namespace MTG
 
             return result;
         }
-
-        private List<CardSet> FilterCardSetList(List<CardSet> setList, CardSet.SetType[] types)
+        private static List<CardSet> FilterCardSetList(List<CardSet> setList, CardSet.CardSetType[] types)
         {
-            return setList.Where(x => types.Contains(x.set_type)).ToList();
+            return setList.Where(x => types.Contains(x.SetType)).ToList();
         }
     }
 }
