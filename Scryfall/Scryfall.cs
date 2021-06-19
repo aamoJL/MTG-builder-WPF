@@ -73,6 +73,17 @@ namespace MTG.Scryfall
     {
         public string name { get; set; }
         public string search_uri { get; set; }
+        public string code { get; set; }
+        public string released_at { get; set; }
+        public string icon_svg_uri { get; set; }
+
+        public string Icon
+        {
+            get
+            {
+                return icon_svg_uri;
+            }
+        }
     }
 
     public class CollectionCard

@@ -3,12 +3,12 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
       xmlns:local="clr-namespace:MTG"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DeckBuilding"
       Background="GhostWhite">
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
@@ -21,9 +21,18 @@
         <TabControl HorizontalAlignment="Left" Width="180" Margin="5,10,0,5" Grid.Column="1" VerticalAlignment="Bottom" SelectionChanged="SetCollectionTab_SelectionChanged">
             <TabItem Header="Sets" x:Name="SetTab">
                 <ComboBox x:Name="CardSetComboBox" SelectionChanged="CardSetComboBox_SelectionChanged">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel Width="250" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling"/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding name}"/>
+                            <StackPanel Orientation="Horizontal" Width="240" CanHorizontallyScroll="False">
+                                <svgc:SvgViewbox Source="{Binding Icon}" Height="16" Width="16" Margin="0,0,5,0"/>
+                                <!--<Image Source="{Binding Icon}" Width="16" Height="16" />-->
+                                <TextBlock Text="{Binding name}"/>
+                            </StackPanel>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
