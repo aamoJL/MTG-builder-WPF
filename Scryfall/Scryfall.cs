@@ -38,6 +38,7 @@ namespace MTG.Scryfall
         [JsonProperty("set")]
         public string Set { get; set; }
 
+        [JsonIgnore]
         public BitmapImage PrimaryFace
         {
             get
@@ -65,6 +66,7 @@ namespace MTG.Scryfall
                 }
             }
         }
+        [JsonIgnore]
         public BitmapImage SecondaryFace
         {
             get
@@ -80,7 +82,8 @@ namespace MTG.Scryfall
                 }
             }
         }
-        public bool HasTwoFaces => CardFaces != null;
+        [JsonIgnore]
+        public bool HasTwoFaces => ImageUris == null && CardFaces != null;
 
         [JsonConverter(typeof(StringEnumConverter))]
         public enum CardColors
@@ -108,6 +111,7 @@ namespace MTG.Scryfall
         [JsonProperty("set_type")]
         public CardSetType SetType { get; set; }
 
+        [JsonIgnore]
         public string Icon => IconSvgUri;
 
         [JsonConverter(typeof(StringEnumConverter))]
