@@ -40,8 +40,6 @@ namespace MTG_builder
         public DeckTesting()
         {
             InitializeComponent();
-
-
         }
 
         // Return the result of the hit test to the callback.
@@ -357,48 +355,53 @@ namespace MTG_builder
         }
         private void DrawCard(int cardIndex, int deckNumber)
         {
-            List<Card> deck = deckNumber == 1 ? deckOneCards : deckTwoCards;
-            Card card = deck[cardIndex];
-            deck.RemoveAt(cardIndex);
-
-            if (card != null)
+            if(deckNumber == 3)
             {
-                Image cardImage = new();
-                cardImage.Height = 250;
-                cardImage.Source = card.PrimaryFace;
-                cardImage.DataContext = card;
-
-                cardImage.RenderTransformOrigin = new(.5f, .5f);
-
-                MatrixTransform matrixTransform = new(_canvasTransform.Matrix);
-
-                // Set card position
-                if (deckNumber == 1)
-                {
-                    double x = Canvas.GetLeft(DeckOnePile);
-                    double y = Canvas.GetTop(DeckOnePile);
-                    Canvas.SetTop(cardImage, y);
-                    Canvas.SetLeft(cardImage, x + ((DeckOnePile.ActualWidth + 20) * _canvasTransform.Matrix.M11));
-                }
-                else
-                {
-                    double x = Canvas.GetLeft(DeckTwoPile);
-                    double y = Canvas.GetTop(DeckTwoPile);
-                    Canvas.SetTop(cardImage, y);
-                    Canvas.SetLeft(cardImage, x + ((DeckOnePile.ActualWidth + 20) * _canvasTransform.Matrix.M11));
-                }
-                
-                cardImage.RenderTransform = matrixTransform;
-
-                cardImage.MouseLeftButtonDown += DeckCardImage_MouseLeftButtonDown;
-                cardImage.MouseRightButtonDown += DeckCardImage_MouseRightButtonDown;
-
-                _ = GameCanvas.Children.Add(cardImage);
+                // Side
+                Card card = (DeckSideListBox.SelectedItem as CollectionCard).Card;
+                CreateCanvasCard(DeckOnePile, card);
             }
+            else
+            {
+                List<Card> deck = deckNumber == 1 ? deckOneCards : deckTwoCards;
+                Card card = deck[cardIndex];
+                deck.RemoveAt(cardIndex);
 
-            if(deckNumber == 1) { DeckOneListBox.Items.Refresh(); }
-            else if (deckNumber == 2) { DeckTwoListBox.Items.Refresh(); }
+                if (card != null)
+                {
+                    Grid pile = deckNumber == 1 ? DeckOnePile : DeckTwoPile;
+                    CreateCanvasCard(pile, card);
+                }
+
+                if(deckNumber == 1) { DeckOneListBox.Items.Refresh(); }
+                else if (deckNumber == 2) { DeckTwoListBox.Items.Refresh(); }
+            }
         }
+        private void CreateCanvasCard(Grid pile, Card card)
+        {
+            Image cardImage = new();
+            cardImage.Height = 250;
+            cardImage.Source = card.PrimaryFace;
+            cardImage.DataContext = card;
+
+            cardImage.RenderTransformOrigin = new(.5f, .5f);
+
+            MatrixTransform matrixTransform = new(_canvasTransform.Matrix);
+
+            // Set card position
+            double x = Canvas.GetLeft(pile);
+            double y = Canvas.GetTop(pile);
+            Canvas.SetTop(cardImage, y);
+            Canvas.SetLeft(cardImage, x + ((DeckOnePile.ActualWidth + 20) * _canvasTransform.Matrix.M11));
+
+            cardImage.RenderTransform = matrixTransform;
+
+            cardImage.MouseLeftButtonDown += DeckCardImage_MouseLeftButtonDown;
+            cardImage.MouseRightButtonDown += DeckCardImage_MouseRightButtonDown;
+
+            _ = GameCanvas.Children.Add(cardImage);
+        }
+
         private static void ShuffleDeck(List<Card> deck)
         {
             int count = deck.Count;
@@ -436,10 +439,7 @@ namespace MTG_builder
 
         private void DeckOneOpenButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new();
-            openFileDialog.Filter = "Text files (*.json)|*.json|All files (*.*)|*.*";
-            string CombinedPath = Path.Combine(Directory.GetCurrentDirectory(), collectionsPath);
-            openFileDialog.InitialDirectory = Path.GetFullPath(CombinedPath);
+            OpenFileDialog openFileDialog = IO.OpenFileDialog(collectionsPath);
 
             if (openFileDialog.ShowDialog() == true)
             {
@@ -481,10 +481,7 @@ namespace MTG_builder
         }
         private void DeckTwoOpenButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new();
-            openFileDialog.Filter = "Text files (*.json)|*.json|All files (*.*)|*.*";
-            string CombinedPath = Path.Combine(Directory.GetCurrentDirectory(), collectionsPath);
-            openFileDialog.InitialDirectory = Path.GetFullPath(CombinedPath);
+            OpenFileDialog openFileDialog = IO.OpenFileDialog(collectionsPath);
 
             if (openFileDialog.ShowDialog() == true)
             {
@@ -523,6 +520,23 @@ namespace MTG_builder
         {
             ShuffleDeck(deckTwoCards);
             DeckTwoListBox.Items.Refresh();
+        }
+        private void DeckSideDrawButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DeckSideListBox.SelectedIndex != -1)
+            {
+                DrawCard(DeckSideListBox.SelectedIndex, 3);
+            }
+        }
+        private void DeckSideOpenButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = IO.OpenFileDialog(collectionsPath);
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                List<CollectionCard> collectionCards = IO.ReadCollectionFromFile(openFileDialog.FileName);
+                DeckSideListBox.ItemsSource = collectionCards;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MTG.Scryfall;
+﻿using Microsoft.Win32;
+using MTG.Scryfall;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -80,6 +81,15 @@ namespace MTG_builder
                 cards.Add(collectionCard.Card);
             }
             return cards;
+        }
+
+        public static OpenFileDialog OpenFileDialog(string relativePath)
+        {
+            OpenFileDialog openFileDialog = new();
+            openFileDialog.Filter = "Text files (*.json)|*.json|All files (*.*)|*.*";
+            string CombinedPath = Path.Combine(Directory.GetCurrentDirectory(), relativePath);
+            openFileDialog.InitialDirectory = Path.GetFullPath(CombinedPath);
+            return openFileDialog;
         }
     }
 }
