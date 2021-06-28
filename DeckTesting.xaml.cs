@@ -6,10 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.IO;
-using MTG_builder;
-using System.Diagnostics;
 
 namespace MTG_builder
 {
@@ -364,6 +360,8 @@ namespace MTG_builder
             else
             {
                 List<Card> deck = deckNumber == 1 ? deckOneCards : deckTwoCards;
+                if (deck.Count == 0) { return; }
+
                 Card card = deck[cardIndex];
                 deck.RemoveAt(cardIndex);
 
@@ -536,6 +534,35 @@ namespace MTG_builder
             {
                 List<CollectionCard> collectionCards = IO.ReadCollectionFromFile(openFileDialog.FileName);
                 DeckSideListBox.ItemsSource = collectionCards;
+            }
+        }
+
+        private void MenuNewGame_Click(object sender, RoutedEventArgs e)
+        {
+            PlayerOneLife.Text = "20";
+            PlayerTwoLife.Text = "20";
+
+            GetDeckCards(1);
+            GetDeckCards(2);
+
+            ShuffleDeck(deckOneCards);
+            ShuffleDeck(deckTwoCards);
+
+            UIElement[] elements = new UIElement[2]
+            {
+                GameCanvas.Children[0],
+                GameCanvas.Children[1]
+            };
+
+            GameCanvas.Children.Clear();
+
+            _ = GameCanvas.Children.Add(elements[0]);
+            _ = GameCanvas.Children.Add(elements[1]);
+
+            for (int i = 0; i < 7; i++)
+            {
+                DrawCard(0, 1);
+                DrawCard(0, 2);
             }
         }
     }

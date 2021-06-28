@@ -6,7 +6,12 @@
         xmlns:local="clr-namespace:MTG_builder"
         mc:Ignorable="d"
         Title="DeckTesting" Height="1080" Width="1900" Background="GhostWhite" WindowState="Maximized">
-    <Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Game">
+                <MenuItem Header="_New Game" Click="MenuNewGame_Click"/>
+            </MenuItem>
+        </Menu>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"/>
@@ -20,7 +25,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <TextBox Grid.Row="0" Margin="0,0,0,5" Text="20" TextAlignment="Center" FontSize="24"/>
+                <TextBox Grid.Row="0" Margin="0,0,0,5" Text="20" TextAlignment="Center" FontSize="24" x:Name="PlayerOneLife"/>
                 <Button Grid.Row="1" Margin="0,0,0,5" Click="DeckOneOpenButton_Click" Content="Open..." />
                 <ListBox Grid.Row="2" x:Name="DeckOneListBox">
                     <ListBox.ItemTemplate>
@@ -72,7 +77,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height=".5*"/>
                 </Grid.RowDefinitions>
-                <TextBox Grid.Row="0" Margin="0,0,0,5" Text="20" TextAlignment="Center" FontSize="24"/>
+                <TextBox Grid.Row="0" Margin="0,0,0,5" Text="20" TextAlignment="Center" FontSize="24" x:Name="PlayerTwoLife"/>
                 <Button Grid.Row="1" Margin="0,0,0,5" Click="DeckTwoOpenButton_Click" Content="Open..." />
                 <ListBox Grid.Row="2" x:Name="DeckTwoListBox">
                     <ListBox.ItemTemplate>
@@ -115,5 +120,5 @@
                 </Grid>
             </Grid>
         </Grid>
-    </Grid>
+    </DockPanel>
 </Window>
