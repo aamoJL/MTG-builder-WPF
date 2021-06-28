@@ -472,6 +472,13 @@ namespace MTG_builder
                 DrawCard(0, 1);
             }
         }
+        private void DeckOneDrawSelectedButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DeckOneListBox.SelectedIndex != -1)
+            {
+                DrawCard(DeckOneListBox.SelectedIndex, 1);
+            }
+        }
         private void DeckTwoOpenButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new();
@@ -491,6 +498,31 @@ namespace MTG_builder
             {
                 DrawCard(0, 2);
             }
+        }
+        private void DeckTwoDrawSelectedButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DeckTwoListBox.SelectedIndex != -1)
+            {
+                DrawCard(DeckTwoListBox.SelectedIndex, 2);
+            }
+        }
+        private void DeckTwoHideButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DeckTwoListBox.Visibility == Visibility.Visible)
+            {
+                DeckTwoListBox.Visibility = Visibility.Hidden;
+                DeckTwoHideButton.Content = "Show";
+            }
+            else
+            {
+                DeckTwoListBox.Visibility = Visibility.Visible;
+                DeckTwoHideButton.Content = "Hide";
+            }
+        }
+        private void DeckTwoShuffleButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShuffleDeck(deckTwoCards);
+            DeckTwoListBox.Items.Refresh();
         }
     }
 }

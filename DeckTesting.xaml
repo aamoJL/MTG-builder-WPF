@@ -33,11 +33,11 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="1.3*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" x:Name="DeckOneHideButton" Click="DeckOneHideButton_Click" Margin="0,0,2.5,0">Hide</Button>
-                    <Button Grid.Column="1" Click="DeckOneShuffleButton_Click" Margin="2.5,0,2.5,0">Shuffle</Button>
-                    <Button Grid.Column="2" Click="DeckOneDrawButton_Click" Margin="2.5,0,0,0">Draw</Button>
+                    <Button Grid.Column="0" x:Name="DeckOneHideButton" Click="DeckOneHideButton_Click" Margin="0,0,2.5,0" Content="Hide" />
+                    <Button Grid.Column="1" Click="DeckOneShuffleButton_Click" Margin="2.5,0,2.5,0" Content="Shuffle" />
+                    <Button Grid.Column="2" Click="DeckOneDrawSelectedButton_Click" Margin="2.5,0,0,0" Content="Draw selected"/>
                 </Grid>
             </Grid>
             <Border Margin="0,10,0,10" Grid.Column="1" BorderBrush="#FFABADB3" BorderThickness="1">
@@ -48,7 +48,7 @@
                         </Grid.RenderTransform>
                         <Grid Panel.ZIndex="10" Name="DeckOneTop" Background="Transparent" Margin="20,10,20,160"></Grid>
                         <Image Source="/CardImages/back.jpg"/>
-                        <Button Width="auto" Height="auto" Margin="20,90,20,90" Click="DeckOneDrawButton_Click">&lt; Draw</Button>
+                        <Button Width="auto" Height="auto" Margin="20,90,20,90" Click="DeckOneDrawButton_Click" Content="&lt; Draw" />
                         <Grid Panel.ZIndex="10" Name="DeckOneBottom" Background="Transparent" Margin="20,160,20,10"></Grid>
                     </Grid>
                     <Grid x:Name="DeckTwoPile" Height="250" MouseLeftButtonDown="DeckCardImage_MouseLeftButtonDown" Canvas.Top="10" Canvas.Left="10" RenderTransformOrigin=".5,.5">
@@ -57,7 +57,7 @@
                         </Grid.RenderTransform>
                         <Grid Panel.ZIndex="10" Name="DeckTwoTop" Background="Transparent" Margin="20,10,20,160"></Grid>
                         <Image Source="/CardImages/back.jpg"/>
-                        <Button Width="auto" Height="auto" Margin="20,90,20,90" Click="DeckTwoDrawButton_Click">Draw &gt;</Button>
+                        <Button Width="auto" Height="auto" Margin="20,90,20,90" Click="DeckTwoDrawButton_Click" Content="Draw &gt;" />
                         <Grid Panel.ZIndex="10" Name="DeckTwoBottom" Background="Transparent" Margin="20,160,20,10"></Grid>
                     </Grid>
                 </Canvas>
@@ -66,8 +66,9 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Margin="0,0,0,5" Click="DeckTwoOpenButton_Click">Open...</Button>
+                <Button Grid.Row="0" Margin="0,0,0,5" Click="DeckTwoOpenButton_Click" Content="Open..." />
                 <ListBox Grid.Row="1" x:Name="DeckTwoListBox">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -77,6 +78,16 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                <Grid Grid.Row="2" Margin="0,5,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="1.3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" x:Name="DeckTwoHideButton" Click="DeckTwoHideButton_Click" Margin="0,0,2.5,0" Content="Hide" />
+                    <Button Grid.Column="1" Click="DeckTwoShuffleButton_Click" Margin="2.5,0,2.5,0" Content="Shuffle" />
+                    <Button Grid.Column="2" Click="DeckTwoDrawSelectedButton_Click" Margin="2.5,0,0,0" Content="Draw selected" />
+                </Grid>
             </Grid>
         </Grid>
     </Grid>
