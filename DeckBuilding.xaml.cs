@@ -222,6 +222,11 @@ namespace MTG
 
             CreateNewCollection();
         }
+        private void DeckTestingButton_Click(object sender, RoutedEventArgs e)
+        {
+            DeckTesting deckTestingWindow = new();
+            deckTestingWindow.Show();
+        }
 
         private void CreateNewCollection()
         {
@@ -288,5 +293,6 @@ namespace MTG
         {
             return setList.Where(x => types.Contains(x.SetType)).ToList();
         }
+
     }
 }

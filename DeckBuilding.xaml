@@ -48,6 +48,7 @@
                     <ComboBox x:Name="CardCollectionComboBox" SelectionChanged="CardCollectionComboBox_SelectionChanged" />
                 </TabItem>
             </TabControl>
+            <Button Grid.Column="1" Content="Deck Testing" Margin="0,10,10,10" HorizontalAlignment="Right" Width="84" Click="DeckTestingButton_Click"/>
             <ListBox x:Name="CardSetImageListBox" Margin="5,5,10,10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Grid.Column="1">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
