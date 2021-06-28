@@ -85,6 +85,10 @@ namespace MTG.Scryfall
         [JsonIgnore]
         public bool HasTwoFaces => ImageUris == null && CardFaces != null;
 
+        //Gameplay
+        [JsonIgnore]
+        public bool Tapped { get; set; }
+
         [JsonConverter(typeof(StringEnumConverter))]
         public enum CardColors
         {

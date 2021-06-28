@@ -1,15 +1,13 @@
 ﻿using Microsoft.Win32;
 using MTG.Scryfall;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Linq;
+using MTG_builder;
 
 namespace MTG
 {
@@ -31,86 +29,13 @@ namespace MTG
             CollectionListBox.ItemsSource = cardCollection.Cards;
 
             // Get card sets from a file and add them to combobox
-            CardSetComboBox.ItemsSource = GetCardSets();
+            CardSetComboBox.ItemsSource = IO.GetCardSets();
 
             // Get collection names from a file and add them to combobox
-            CardCollectionComboBox.ItemsSource = GetCollectionNames(collectionsPath);
+            CardCollectionComboBox.ItemsSource = IO.GetCollectionNames(collectionsPath);
 
             CardSetTypeComboBox.ItemsSource = CardSet.GetSetTypes();
             CardSetTypeComboBox.SelectedIndex = 1;
-        }
-
-        private static List<CardSet> GetCardSets()
-        {
-            try
-            {
-                string path = "Resources/Scryfall_sets.json";
-                string json = File.ReadAllText(path);
-
-                CardSetData setBase = JsonConvert.DeserializeObject<CardSetData>(json);
-                return setBase.Data;
-            }
-            catch (IOException e)
-            {
-                Debug.WriteLine(e.Message);
-                throw;
-            }
-        }
-        private static string[] GetCollectionNames(string path)
-        {
-            string[] files = Directory.GetFiles(path, "*.json");
-            string[] fileNames = new string[files.Length];
-
-            for (int i = 0; i < files.Length; i++)
-            {
-                fileNames[i] = Path.GetFileNameWithoutExtension(files[i]);
-            }
-
-            return fileNames;
-        }
-        private static List<Card> GetCardsFromCollection(CardCollection collection)
-        {
-            List<Card> cards = new();
-            foreach (CollectionCard collectionCard in collection.Cards)
-            {
-                cards.Add(collectionCard.Card);
-            }
-
-            return cards;
-        }
-        private static List<Card> GetCardsFromCollection(List<CollectionCard> collectionCards)
-        {
-            List<Card> cards = new();
-            foreach (CollectionCard collectionCard in collectionCards)
-            {
-                cards.Add(collectionCard.Card);
-            }
-            return cards;
-        }
-        private static List<Card> FetchScryfallSetCards(string searchUri)
-        {
-            List<Card> cards = new();
-
-            using WebClient wc = new();
-
-            string json = wc.DownloadString(searchUri);
-            CardData cardData = JsonConvert.DeserializeObject<CardData>(json);
-            cards.AddRange(cardData.Data);
-
-            while (cardData.HasMore)
-            {
-                json = wc.DownloadString(cardData.NextPage);
-                cardData = JsonConvert.DeserializeObject<CardData>(json);
-                cards.AddRange(cardData.Data);
-            }
-
-            return cards;
-        }
-        private static List<CollectionCard> ReadCollectionFromFile(string path)
-        {
-            using StreamReader file = File.OpenText(path);
-            JsonSerializer serializer = new();
-            return (List<CollectionCard>)serializer.Deserialize(file, typeof(List<CollectionCard>));
         }
 
         private void AddCardToCollection(Card card)
@@ -139,7 +64,7 @@ namespace MTG
         }
         private void ChangeCollection(string path)
         {
-            List<CollectionCard> cards = ReadCollectionFromFile(path);
+            List<CollectionCard> cards = IO.ReadCollectionFromFile(path);
             string collectionsName = Path.GetFileNameWithoutExtension(path);
 
             cardCollection.ChangeCollection(cards, collectionsName);
@@ -151,7 +76,7 @@ namespace MTG
         {
             if (CollectionTab.IsSelected)
             {
-                CardCollectionComboBox.ItemsSource = GetCollectionNames(collectionsPath);
+                CardCollectionComboBox.ItemsSource = IO.GetCollectionNames(collectionsPath);
             }
         }
         private void CardSetComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -159,7 +84,7 @@ namespace MTG
             if(CardSetComboBox.SelectedIndex == -1) { return; }
             CardSet set = CardSetComboBox.SelectedItem as CardSet;
 
-            List<Card> cards = FetchScryfallSetCards(set.SearchUri);
+            List<Card> cards = IO.FetchScryfallSetCards(set.SearchUri);
             CardSetImageListBox.ItemsSource = cards;
             CardCollectionComboBox.SelectedIndex = -1;
         }
@@ -168,11 +93,11 @@ namespace MTG
             if(CardCollectionComboBox.SelectedIndex == -1) { return; }
             string collectionName = CardCollectionComboBox.SelectedItem.ToString();
 
-            List<CollectionCard> collectionCards = ReadCollectionFromFile($"{collectionsPath}{collectionName}.json");
+            List<CollectionCard> collectionCards = IO.ReadCollectionFromFile($"{collectionsPath}{collectionName}.json");
 
             if(collectionCards != null)
             {
-                List<Card> cards = GetCardsFromCollection(collectionCards);
+                List<Card> cards = IO.GetCardsFromCollection(collectionCards);
                 CardSetImageListBox.ItemsSource = cards;
                 CardSetComboBox.SelectedIndex = -1;
             }
@@ -183,7 +108,7 @@ namespace MTG
         }
         private void CardSetTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CardSetComboBox.ItemsSource = FilterCardSetList(GetCardSets(), new CardSet.CardSetType[] { (CardSet.CardSetType)CardSetTypeComboBox.SelectedItem });
+            CardSetComboBox.ItemsSource = FilterCardSetList(IO.GetCardSets(), new CardSet.CardSetType[] { (CardSet.CardSetType)CardSetTypeComboBox.SelectedItem });
         }
         private void CollectionListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
