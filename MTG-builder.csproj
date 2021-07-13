@@ -9,14 +9,2722 @@
 
   <ItemGroup>
     <None Remove="CardImages\back.jpg" />
-    <None Remove="Resources\Scryfall_sets.json" />
+    <None Remove="SetIcons\10e.png" />
+    <None Remove="SetIcons\2ed.png" />
+    <None Remove="SetIcons\2xm.png" />
+    <None Remove="SetIcons\3ed.png" />
+    <None Remove="SetIcons\4bb.png" />
+    <None Remove="SetIcons\4ed.png" />
+    <None Remove="SetIcons\5dn.png" />
+    <None Remove="SetIcons\5ed.png" />
+    <None Remove="SetIcons\6ed.png" />
+    <None Remove="SetIcons\7ed.png" />
+    <None Remove="SetIcons\8ed.png" />
+    <None Remove="SetIcons\9ed.png" />
+    <None Remove="SetIcons\a25.png" />
+    <None Remove="SetIcons\aer.png" />
+    <None Remove="SetIcons\afr.png" />
+    <None Remove="SetIcons\ajmp.png" />
+    <None Remove="SetIcons\akh.png" />
+    <None Remove="SetIcons\akhm.png" />
+    <None Remove="SetIcons\akr.png" />
+    <None Remove="SetIcons\ala.png" />
+    <None Remove="SetIcons\all.png" />
+    <None Remove="SetIcons\amh1.png" />
+    <None Remove="SetIcons\amh2.png" />
+    <None Remove="SetIcons\ana.png" />
+    <None Remove="SetIcons\anb.png" />
+    <None Remove="SetIcons\apc.png" />
+    <None Remove="SetIcons\arb.png" />
+    <None Remove="SetIcons\arc.png" />
+    <None Remove="SetIcons\arn.png" />
+    <None Remove="SetIcons\astx.png" />
+    <None Remove="SetIcons\ath.png" />
+    <None Remove="SetIcons\atq.png" />
+    <None Remove="SetIcons\avr.png" />
+    <None Remove="SetIcons\aznr.png" />
+    <None Remove="SetIcons\bbd.png" />
+    <None Remove="SetIcons\bfz.png" />
+    <None Remove="SetIcons\bng.png" />
+    <None Remove="SetIcons\bok.png" />
+    <None Remove="SetIcons\brb.png" />
+    <None Remove="SetIcons\btd.png" />
+    <None Remove="SetIcons\c13.png" />
+    <None Remove="SetIcons\c14.png" />
+    <None Remove="SetIcons\c15.png" />
+    <None Remove="SetIcons\c16.png" />
+    <None Remove="SetIcons\c17.png" />
+    <None Remove="SetIcons\c18.png" />
+    <None Remove="SetIcons\c19.png" />
+    <None Remove="SetIcons\c20.png" />
+    <None Remove="SetIcons\c21.png" />
+    <None Remove="SetIcons\cc1.png" />
+    <None Remove="SetIcons\ced.png" />
+    <None Remove="SetIcons\cei.png" />
+    <None Remove="SetIcons\chk.png" />
+    <None Remove="SetIcons\chr.png" />
+    <None Remove="SetIcons\cm1.png" />
+    <None Remove="SetIcons\cm2.png" />
+    <None Remove="SetIcons\cma.png" />
+    <None Remove="SetIcons\cmb1.png" />
+    <None Remove="SetIcons\cmd.png" />
+    <None Remove="SetIcons\cmr.png" />
+    <None Remove="SetIcons\cn2.png" />
+    <None Remove="SetIcons\cns.png" />
+    <None Remove="SetIcons\cp1.png" />
+    <None Remove="SetIcons\cp2.png" />
+    <None Remove="SetIcons\cp3.png" />
+    <None Remove="SetIcons\csp.png" />
+    <None Remove="SetIcons\cst.png" />
+    <None Remove="SetIcons\dd1.png" />
+    <None Remove="SetIcons\dd2.png" />
+    <None Remove="SetIcons\ddc.png" />
+    <None Remove="SetIcons\ddd.png" />
+    <None Remove="SetIcons\dde.png" />
+    <None Remove="SetIcons\ddf.png" />
+    <None Remove="SetIcons\ddg.png" />
+    <None Remove="SetIcons\ddh.png" />
+    <None Remove="SetIcons\ddi.png" />
+    <None Remove="SetIcons\ddj.png" />
+    <None Remove="SetIcons\ddk.png" />
+    <None Remove="SetIcons\ddl.png" />
+    <None Remove="SetIcons\ddm.png" />
+    <None Remove="SetIcons\ddn.png" />
+    <None Remove="SetIcons\ddo.png" />
+    <None Remove="SetIcons\ddp.png" />
+    <None Remove="SetIcons\ddq.png" />
+    <None Remove="SetIcons\ddr.png" />
+    <None Remove="SetIcons\dds.png" />
+    <None Remove="SetIcons\ddt.png" />
+    <None Remove="SetIcons\ddu.png" />
+    <None Remove="SetIcons\dgm.png" />
+    <None Remove="SetIcons\dis.png" />
+    <None Remove="SetIcons\dka.png" />
+    <None Remove="SetIcons\dkm.png" />
+    <None Remove="SetIcons\dom.png" />
+    <None Remove="SetIcons\dpa.png" />
+    <None Remove="SetIcons\drb.png" />
+    <None Remove="SetIcons\drk.png" />
+    <None Remove="SetIcons\dst.png" />
+    <None Remove="SetIcons\dtk.png" />
+    <None Remove="SetIcons\dvd.png" />
+    <None Remove="SetIcons\e01.png" />
+    <None Remove="SetIcons\e02.png" />
+    <None Remove="SetIcons\eld.png" />
+    <None Remove="SetIcons\ema.png" />
+    <None Remove="SetIcons\emn.png" />
+    <None Remove="SetIcons\eve.png" />
+    <None Remove="SetIcons\evg.png" />
+    <None Remove="SetIcons\exo.png" />
+    <None Remove="SetIcons\exp.png" />
+    <None Remove="SetIcons\f01.png" />
+    <None Remove="SetIcons\f02.png" />
+    <None Remove="SetIcons\f03.png" />
+    <None Remove="SetIcons\f04.png" />
+    <None Remove="SetIcons\f05.png" />
+    <None Remove="SetIcons\f06.png" />
+    <None Remove="SetIcons\f07.png" />
+    <None Remove="SetIcons\f08.png" />
+    <None Remove="SetIcons\f09.png" />
+    <None Remove="SetIcons\f10.png" />
+    <None Remove="SetIcons\f11.png" />
+    <None Remove="SetIcons\f12.png" />
+    <None Remove="SetIcons\f13.png" />
+    <None Remove="SetIcons\f14.png" />
+    <None Remove="SetIcons\f15.png" />
+    <None Remove="SetIcons\f16.png" />
+    <None Remove="SetIcons\f17.png" />
+    <None Remove="SetIcons\f18.png" />
+    <None Remove="SetIcons\fbb.png" />
+    <None Remove="SetIcons\fem.png" />
+    <None Remove="SetIcons\fjmp.png" />
+    <None Remove="SetIcons\fmb1.png" />
+    <None Remove="SetIcons\fnm.png" />
+    <None Remove="SetIcons\frf.png" />
+    <None Remove="SetIcons\fut.png" />
+    <None Remove="SetIcons\g00.png" />
+    <None Remove="SetIcons\g01.png" />
+    <None Remove="SetIcons\g02.png" />
+    <None Remove="SetIcons\g03.png" />
+    <None Remove="SetIcons\g04.png" />
+    <None Remove="SetIcons\g05.png" />
+    <None Remove="SetIcons\g06.png" />
+    <None Remove="SetIcons\g07.png" />
+    <None Remove="SetIcons\g08.png" />
+    <None Remove="SetIcons\g09.png" />
+    <None Remove="SetIcons\g10.png" />
+    <None Remove="SetIcons\g11.png" />
+    <None Remove="SetIcons\g17.png" />
+    <None Remove="SetIcons\g18.png" />
+    <None Remove="SetIcons\g99.png" />
+    <None Remove="SetIcons\gk1.png" />
+    <None Remove="SetIcons\gk2.png" />
+    <None Remove="SetIcons\gn2.png" />
+    <None Remove="SetIcons\gnt.png" />
+    <None Remove="SetIcons\gpt.png" />
+    <None Remove="SetIcons\grn.png" />
+    <None Remove="SetIcons\gs1.png" />
+    <None Remove="SetIcons\gtc.png" />
+    <None Remove="SetIcons\gvl.png" />
+    <None Remove="SetIcons\h09.png" />
+    <None Remove="SetIcons\h17.png" />
+    <None Remove="SetIcons\h1r.png" />
+    <None Remove="SetIcons\ha1.png" />
+    <None Remove="SetIcons\ha2.png" />
+    <None Remove="SetIcons\ha3.png" />
+    <None Remove="SetIcons\ha4.png" />
+    <None Remove="SetIcons\ha5.png" />
+    <None Remove="SetIcons\hho.png" />
+    <None Remove="SetIcons\hml.png" />
+    <None Remove="SetIcons\hop.png" />
+    <None Remove="SetIcons\hou.png" />
+    <None Remove="SetIcons\htr16.png" />
+    <None Remove="SetIcons\htr17.png" />
+    <None Remove="SetIcons\htr18.png" />
+    <None Remove="SetIcons\htr19.png" />
+    <None Remove="SetIcons\ice.png" />
+    <None Remove="SetIcons\iko.png" />
+    <None Remove="SetIcons\ima.png" />
+    <None Remove="SetIcons\inv.png" />
+    <None Remove="SetIcons\isd.png" />
+    <None Remove="SetIcons\itp.png" />
+    <None Remove="SetIcons\j12.png" />
+    <None Remove="SetIcons\j13.png" />
+    <None Remove="SetIcons\j14.png" />
+    <None Remove="SetIcons\j15.png" />
+    <None Remove="SetIcons\j16.png" />
+    <None Remove="SetIcons\j17.png" />
+    <None Remove="SetIcons\j18.png" />
+    <None Remove="SetIcons\j19.png" />
+    <None Remove="SetIcons\j20.png" />
+    <None Remove="SetIcons\j21.png" />
+    <None Remove="SetIcons\jgp.png" />
+    <None Remove="SetIcons\jmp.png" />
+    <None Remove="SetIcons\jou.png" />
+    <None Remove="SetIcons\jud.png" />
+    <None Remove="SetIcons\jvc.png" />
+    <None Remove="SetIcons\khc.png" />
+    <None Remove="SetIcons\khm.png" />
+    <None Remove="SetIcons\kld.png" />
+    <None Remove="SetIcons\klr.png" />
+    <None Remove="SetIcons\ktk.png" />
+    <None Remove="SetIcons\l12.png" />
+    <None Remove="SetIcons\l13.png" />
+    <None Remove="SetIcons\l14.png" />
+    <None Remove="SetIcons\l15.png" />
+    <None Remove="SetIcons\l16.png" />
+    <None Remove="SetIcons\l17.png" />
+    <None Remove="SetIcons\lea.png" />
+    <None Remove="SetIcons\leb.png" />
+    <None Remove="SetIcons\leg.png" />
+    <None Remove="SetIcons\lgn.png" />
+    <None Remove="SetIcons\lrw.png" />
+    <None Remove="SetIcons\m10.png" />
+    <None Remove="SetIcons\m11.png" />
+    <None Remove="SetIcons\m12.png" />
+    <None Remove="SetIcons\m13.png" />
+    <None Remove="SetIcons\m14.png" />
+    <None Remove="SetIcons\m15.png" />
+    <None Remove="SetIcons\m19.png" />
+    <None Remove="SetIcons\m20.png" />
+    <None Remove="SetIcons\m21.png" />
+    <None Remove="SetIcons\mb1.png" />
+    <None Remove="SetIcons\mbs.png" />
+    <None Remove="SetIcons\md1.png" />
+    <None Remove="SetIcons\me1.png" />
+    <None Remove="SetIcons\me2.png" />
+    <None Remove="SetIcons\me3.png" />
+    <None Remove="SetIcons\me4.png" />
+    <None Remove="SetIcons\med.png" />
+    <None Remove="SetIcons\mgb.png" />
+    <None Remove="SetIcons\mh1.png" />
+    <None Remove="SetIcons\mh2.png" />
+    <None Remove="SetIcons\mir.png" />
+    <None Remove="SetIcons\mm2.png" />
+    <None Remove="SetIcons\mm3.png" />
+    <None Remove="SetIcons\mma.png" />
+    <None Remove="SetIcons\mmq.png" />
+    <None Remove="SetIcons\mor.png" />
+    <None Remove="SetIcons\mp2.png" />
+    <None Remove="SetIcons\mpr.png" />
+    <None Remove="SetIcons\mps.png" />
+    <None Remove="SetIcons\mrd.png" />
+    <None Remove="SetIcons\mznr.png" />
+    <None Remove="SetIcons\nem.png" />
+    <None Remove="SetIcons\nph.png" />
+    <None Remove="SetIcons\oana.png" />
+    <None Remove="SetIcons\oarc.png" />
+    <None Remove="SetIcons\oc13.png" />
+    <None Remove="SetIcons\oc14.png" />
+    <None Remove="SetIcons\oc15.png" />
+    <None Remove="SetIcons\oc16.png" />
+    <None Remove="SetIcons\oc17.png" />
+    <None Remove="SetIcons\oc18.png" />
+    <None Remove="SetIcons\oc19.png" />
+    <None Remove="SetIcons\oc20.png" />
+    <None Remove="SetIcons\oc21.png" />
+    <None Remove="SetIcons\ocm1.png" />
+    <None Remove="SetIcons\ocmd.png" />
+    <None Remove="SetIcons\ody.png" />
+    <None Remove="SetIcons\oe01.png" />
+    <None Remove="SetIcons\ogw.png" />
+    <None Remove="SetIcons\ohop.png" />
+    <None Remove="SetIcons\olgc.png" />
+    <None Remove="SetIcons\ons.png" />
+    <None Remove="SetIcons\opc2.png" />
+    <None Remove="SetIcons\opca.png" />
+    <None Remove="SetIcons\ori.png" />
+    <None Remove="SetIcons\ovnt.png" />
+    <None Remove="SetIcons\p02.png" />
+    <None Remove="SetIcons\p03.png" />
+    <None Remove="SetIcons\p04.png" />
+    <None Remove="SetIcons\p05.png" />
+    <None Remove="SetIcons\p06.png" />
+    <None Remove="SetIcons\p07.png" />
+    <None Remove="SetIcons\p08.png" />
+    <None Remove="SetIcons\p09.png" />
+    <None Remove="SetIcons\p10.png" />
+    <None Remove="SetIcons\p10e.png" />
+    <None Remove="SetIcons\p11.png" />
+    <None Remove="SetIcons\p15a.png" />
+    <None Remove="SetIcons\p2hg.png" />
+    <None Remove="SetIcons\p5dn.png" />
+    <None Remove="SetIcons\p8ed.png" />
+    <None Remove="SetIcons\p9ed.png" />
+    <None Remove="SetIcons\paer.png" />
+    <None Remove="SetIcons\pakh.png" />
+    <None Remove="SetIcons\pal00.png" />
+    <None Remove="SetIcons\pal01.png" />
+    <None Remove="SetIcons\pal02.png" />
+    <None Remove="SetIcons\pal03.png" />
+    <None Remove="SetIcons\pal04.png" />
+    <None Remove="SetIcons\pal05.png" />
+    <None Remove="SetIcons\pal06.png" />
+    <None Remove="SetIcons\pal99.png" />
+    <None Remove="SetIcons\pala.png" />
+    <None Remove="SetIcons\palp.png" />
+    <None Remove="SetIcons\pana.png" />
+    <None Remove="SetIcons\papc.png" />
+    <None Remove="SetIcons\parb.png" />
+    <None Remove="SetIcons\parc.png" />
+    <None Remove="SetIcons\parl.png" />
+    <None Remove="SetIcons\past.png" />
+    <None Remove="SetIcons\pavr.png" />
+    <None Remove="SetIcons\pbbd.png" />
+    <None Remove="SetIcons\pbfz.png" />
+    <None Remove="SetIcons\pbng.png" />
+    <None Remove="SetIcons\pbok.png" />
+    <None Remove="SetIcons\pbook.png" />
+    <None Remove="SetIcons\pc2.png" />
+    <None Remove="SetIcons\pc20.png" />
+    <None Remove="SetIcons\pca.png" />
+    <None Remove="SetIcons\pcel.png" />
+    <None Remove="SetIcons\pchk.png" />
+    <None Remove="SetIcons\pcmd.png" />
+    <None Remove="SetIcons\pcmp.png" />
+    <None Remove="SetIcons\pcns.png" />
+    <None Remove="SetIcons\pcon.png" />
+    <None Remove="SetIcons\pcsp.png" />
+    <None Remove="SetIcons\pcy.png" />
+    <None Remove="SetIcons\pd2.png" />
+    <None Remove="SetIcons\pd3.png" />
+    <None Remove="SetIcons\pdgm.png" />
+    <None Remove="SetIcons\pdis.png" />
+    <None Remove="SetIcons\pdka.png" />
+    <None Remove="SetIcons\pdom.png" />
+    <None Remove="SetIcons\pdp10.png" />
+    <None Remove="SetIcons\pdp12.png" />
+    <None Remove="SetIcons\pdp13.png" />
+    <None Remove="SetIcons\pdp14.png" />
+    <None Remove="SetIcons\pdp15.png" />
+    <None Remove="SetIcons\pdrc.png" />
+    <None Remove="SetIcons\pdst.png" />
+    <None Remove="SetIcons\pdtk.png" />
+    <None Remove="SetIcons\pdtp.png" />
+    <None Remove="SetIcons\peld.png" />
+    <None Remove="SetIcons\pelp.png" />
+    <None Remove="SetIcons\pemn.png" />
+    <None Remove="SetIcons\peve.png" />
+    <None Remove="SetIcons\pexo.png" />
+    <None Remove="SetIcons\pf19.png" />
+    <None Remove="SetIcons\pf20.png" />
+    <None Remove="SetIcons\pfrf.png" />
+    <None Remove="SetIcons\pfut.png" />
+    <None Remove="SetIcons\pg07.png" />
+    <None Remove="SetIcons\pg08.png" />
+    <None Remove="SetIcons\pgpt.png" />
+    <None Remove="SetIcons\pgpx.png" />
+    <None Remove="SetIcons\pgrn.png" />
+    <None Remove="SetIcons\pgru.png" />
+    <None Remove="SetIcons\pgtc.png" />
+    <None Remove="SetIcons\pgtw.png" />
+    <None Remove="SetIcons\phel.png" />
+    <None Remove="SetIcons\phj.png" />
+    <None Remove="SetIcons\phop.png" />
+    <None Remove="SetIcons\phou.png" />
+    <None Remove="SetIcons\phpr.png" />
+    <None Remove="SetIcons\phuk.png" />
+    <None Remove="SetIcons\pi13.png" />
+    <None Remove="SetIcons\pi14.png" />
+    <None Remove="SetIcons\pidw.png" />
+    <None Remove="SetIcons\piko.png" />
+    <None Remove="SetIcons\pinv.png" />
+    <None Remove="SetIcons\pisd.png" />
+    <None Remove="SetIcons\pjas.png" />
+    <None Remove="SetIcons\pjjt.png" />
+    <None Remove="SetIcons\pjou.png" />
+    <None Remove="SetIcons\pjse.png" />
+    <None Remove="SetIcons\pjud.png" />
+    <None Remove="SetIcons\pkhm.png" />
+    <None Remove="SetIcons\pkld.png" />
+    <None Remove="SetIcons\pktk.png" />
+    <None Remove="SetIcons\pl21.png" />
+    <None Remove="SetIcons\plc.png" />
+    <None Remove="SetIcons\plgm.png" />
+    <None Remove="SetIcons\plgn.png" />
+    <None Remove="SetIcons\plgs.png" />
+    <None Remove="SetIcons\plist.png" />
+    <None Remove="SetIcons\plny.png" />
+    <None Remove="SetIcons\plrw.png" />
+    <None Remove="SetIcons\pls.png" />
+    <None Remove="SetIcons\pm10.png" />
+    <None Remove="SetIcons\pm11.png" />
+    <None Remove="SetIcons\pm12.png" />
+    <None Remove="SetIcons\pm13.png" />
+    <None Remove="SetIcons\pm14.png" />
+    <None Remove="SetIcons\pm15.png" />
+    <None Remove="SetIcons\pm19.png" />
+    <None Remove="SetIcons\pm20.png" />
+    <None Remove="SetIcons\pm21.png" />
+    <None Remove="SetIcons\pmbs.png" />
+    <None Remove="SetIcons\pmei.png" />
+    <None Remove="SetIcons\pmh1.png" />
+    <None Remove="SetIcons\pmic.png" />
+    <None Remove="SetIcons\pmmq.png" />
+    <None Remove="SetIcons\pmoa.png" />
+    <None Remove="SetIcons\pmor.png" />
+    <None Remove="SetIcons\pmps.png" />
+    <None Remove="SetIcons\pmps06.png" />
+    <None Remove="SetIcons\pmps07.png" />
+    <None Remove="SetIcons\pmps08.png" />
+    <None Remove="SetIcons\pmps09.png" />
+    <None Remove="SetIcons\pmps10.png" />
+    <None Remove="SetIcons\pmps11.png" />
+    <None Remove="SetIcons\pmrd.png" />
+    <None Remove="SetIcons\pnat.png" />
+    <None Remove="SetIcons\pnem.png" />
+    <None Remove="SetIcons\pnph.png" />
+    <None Remove="SetIcons\pody.png" />
+    <None Remove="SetIcons\pogw.png" />
+    <None Remove="SetIcons\pons.png" />
+    <None Remove="SetIcons\por.png" />
+    <None Remove="SetIcons\pori.png" />
+    <None Remove="SetIcons\ppc1.png" />
+    <None Remove="SetIcons\ppcy.png" />
+    <None Remove="SetIcons\pplc.png" />
+    <None Remove="SetIcons\ppls.png" />
+    <None Remove="SetIcons\ppod.png" />
+    <None Remove="SetIcons\ppp1.png" />
+    <None Remove="SetIcons\ppro.png" />
+    <None Remove="SetIcons\pptk.png" />
+    <None Remove="SetIcons\pr2.png" />
+    <None Remove="SetIcons\prav.png" />
+    <None Remove="SetIcons\pred.png" />
+    <None Remove="SetIcons\pres.png" />
+    <None Remove="SetIcons\prix.png" />
+    <None Remove="SetIcons\prm.png" />
+    <None Remove="SetIcons\prna.png" />
+    <None Remove="SetIcons\proe.png" />
+    <None Remove="SetIcons\prtr.png" />
+    <None Remove="SetIcons\prw2.png" />
+    <None Remove="SetIcons\prwk.png" />
+    <None Remove="SetIcons\ps11.png" />
+    <None Remove="SetIcons\ps14.png" />
+    <None Remove="SetIcons\ps15.png" />
+    <None Remove="SetIcons\ps16.png" />
+    <None Remove="SetIcons\ps17.png" />
+    <None Remove="SetIcons\ps18.png" />
+    <None Remove="SetIcons\ps19.png" />
+    <None Remove="SetIcons\psal.png" />
+    <None Remove="SetIcons\pscg.png" />
+    <None Remove="SetIcons\psdc.png" />
+    <None Remove="SetIcons\psdg.png" />
+    <None Remove="SetIcons\pshm.png" />
+    <None Remove="SetIcons\psoi.png" />
+    <None Remove="SetIcons\psok.png" />
+    <None Remove="SetIcons\psom.png" />
+    <None Remove="SetIcons\pss1.png" />
+    <None Remove="SetIcons\pss2.png" />
+    <None Remove="SetIcons\pss3.png" />
+    <None Remove="SetIcons\psth.png" />
+    <None Remove="SetIcons\pstx.png" />
+    <None Remove="SetIcons\psum.png" />
+    <None Remove="SetIcons\psus.png" />
+    <None Remove="SetIcons\ptc.png" />
+    <None Remove="SetIcons\ptg.png" />
+    <None Remove="SetIcons\pthb.png" />
+    <None Remove="SetIcons\pths.png" />
+    <None Remove="SetIcons\ptk.png" />
+    <None Remove="SetIcons\ptkdf.png" />
+    <None Remove="SetIcons\ptmp.png" />
+    <None Remove="SetIcons\ptor.png" />
+    <None Remove="SetIcons\ptsp.png" />
+    <None Remove="SetIcons\puds.png" />
+    <None Remove="SetIcons\pulg.png" />
+    <None Remove="SetIcons\puma.png" />
+    <None Remove="SetIcons\punh.png" />
+    <None Remove="SetIcons\purl.png" />
+    <None Remove="SetIcons\pusg.png" />
+    <None Remove="SetIcons\pust.png" />
+    <None Remove="SetIcons\pvan.png" />
+    <None Remove="SetIcons\pwar.png" />
+    <None Remove="SetIcons\pwcq.png" />
+    <None Remove="SetIcons\pwor.png" />
+    <None Remove="SetIcons\pwos.png" />
+    <None Remove="SetIcons\pwp09.png" />
+    <None Remove="SetIcons\pwp10.png" />
+    <None Remove="SetIcons\pwp11.png" />
+    <None Remove="SetIcons\pwp12.png" />
+    <None Remove="SetIcons\pwp21.png" />
+    <None Remove="SetIcons\pwpn.png" />
+    <None Remove="SetIcons\pwwk.png" />
+    <None Remove="SetIcons\pxln.png" />
+    <None Remove="SetIcons\pxtc.png" />
+    <None Remove="SetIcons\pz1.png" />
+    <None Remove="SetIcons\pz2.png" />
+    <None Remove="SetIcons\pzen.png" />
+    <None Remove="SetIcons\pznr.png" />
+    <None Remove="SetIcons\rav.png" />
+    <None Remove="SetIcons\ren.png" />
+    <None Remove="SetIcons\rin.png" />
+    <None Remove="SetIcons\rix.png" />
+    <None Remove="SetIcons\rna.png" />
+    <None Remove="SetIcons\roe.png" />
+    <None Remove="SetIcons\rqs.png" />
+    <None Remove="SetIcons\rtr.png" />
+    <None Remove="SetIcons\s00.png" />
+    <None Remove="SetIcons\s99.png" />
+    <None Remove="SetIcons\scg.png" />
+    <None Remove="SetIcons\shm.png" />
+    <None Remove="SetIcons\sld.png" />
+    <None Remove="SetIcons\slu.png" />
+    <None Remove="SetIcons\soi.png" />
+    <None Remove="SetIcons\sok.png" />
+    <None Remove="SetIcons\som.png" />
+    <None Remove="SetIcons\ss1.png" />
+    <None Remove="SetIcons\ss2.png" />
+    <None Remove="SetIcons\ss3.png" />
+    <None Remove="SetIcons\sta.png" />
+    <None Remove="SetIcons\sth.png" />
+    <None Remove="SetIcons\stx.png" />
+    <None Remove="SetIcons\sum.png" />
+    <None Remove="SetIcons\sznr.png" />
+    <None Remove="SetIcons\t10e.png" />
+    <None Remove="SetIcons\t2xm.png" />
+    <None Remove="SetIcons\ta25.png" />
+    <None Remove="SetIcons\taer.png" />
+    <None Remove="SetIcons\takh.png" />
+    <None Remove="SetIcons\tala.png" />
+    <None Remove="SetIcons\tarb.png" />
+    <None Remove="SetIcons\tavr.png" />
+    <None Remove="SetIcons\tbbd.png" />
+    <None Remove="SetIcons\tbfz.png" />
+    <None Remove="SetIcons\tbng.png" />
+    <None Remove="SetIcons\tbth.png" />
+    <None Remove="SetIcons\tc14.png" />
+    <None Remove="SetIcons\tc15.png" />
+    <None Remove="SetIcons\tc16.png" />
+    <None Remove="SetIcons\tc17.png" />
+    <None Remove="SetIcons\tc18.png" />
+    <None Remove="SetIcons\tc19.png" />
+    <None Remove="SetIcons\tc20.png" />
+    <None Remove="SetIcons\tc21.png" />
+    <None Remove="SetIcons\tcm2.png" />
+    <None Remove="SetIcons\tcma.png" />
+    <None Remove="SetIcons\tcmr.png" />
+    <None Remove="SetIcons\tcn2.png" />
+    <None Remove="SetIcons\tcns.png" />
+    <None Remove="SetIcons\tcon.png" />
+    <None Remove="SetIcons\td0.png" />
+    <None Remove="SetIcons\td2.png" />
+    <None Remove="SetIcons\tdag.png" />
+    <None Remove="SetIcons\tdd1.png" />
+    <None Remove="SetIcons\tdd2.png" />
+    <None Remove="SetIcons\tddc.png" />
+    <None Remove="SetIcons\tddd.png" />
+    <None Remove="SetIcons\tdde.png" />
+    <None Remove="SetIcons\tddf.png" />
+    <None Remove="SetIcons\tddg.png" />
+    <None Remove="SetIcons\tddh.png" />
+    <None Remove="SetIcons\tddi.png" />
+    <None Remove="SetIcons\tddj.png" />
+    <None Remove="SetIcons\tddk.png" />
+    <None Remove="SetIcons\tddl.png" />
+    <None Remove="SetIcons\tddm.png" />
+    <None Remove="SetIcons\tdds.png" />
+    <None Remove="SetIcons\tddt.png" />
+    <None Remove="SetIcons\tddu.png" />
+    <None Remove="SetIcons\tdgm.png" />
+    <None Remove="SetIcons\tdka.png" />
+    <None Remove="SetIcons\tdom.png" />
+    <None Remove="SetIcons\tdtk.png" />
+    <None Remove="SetIcons\tdvd.png" />
+    <None Remove="SetIcons\te01.png" />
+    <None Remove="SetIcons\teld.png" />
+    <None Remove="SetIcons\tema.png" />
+    <None Remove="SetIcons\temn.png" />
+    <None Remove="SetIcons\teve.png" />
+    <None Remove="SetIcons\tevg.png" />
+    <None Remove="SetIcons\tfrf.png" />
+    <None Remove="SetIcons\tfth.png" />
+    <None Remove="SetIcons\tgk1.png" />
+    <None Remove="SetIcons\tgk2.png" />
+    <None Remove="SetIcons\tgn2.png" />
+    <None Remove="SetIcons\tgrn.png" />
+    <None Remove="SetIcons\tgtc.png" />
+    <None Remove="SetIcons\tgvl.png" />
+    <None Remove="SetIcons\thb.png" />
+    <None Remove="SetIcons\thou.png" />
+    <None Remove="SetIcons\thp1.png" />
+    <None Remove="SetIcons\thp2.png" />
+    <None Remove="SetIcons\thp3.png" />
+    <None Remove="SetIcons\ths.png" />
+    <None Remove="SetIcons\tiko.png" />
+    <None Remove="SetIcons\tima.png" />
+    <None Remove="SetIcons\tisd.png" />
+    <None Remove="SetIcons\tjou.png" />
+    <None Remove="SetIcons\tjvc.png" />
+    <None Remove="SetIcons\tkhc.png" />
+    <None Remove="SetIcons\tkhm.png" />
+    <None Remove="SetIcons\tkld.png" />
+    <None Remove="SetIcons\tktk.png" />
+    <None Remove="SetIcons\tlrw.png" />
+    <None Remove="SetIcons\tm10.png" />
+    <None Remove="SetIcons\tm11.png" />
+    <None Remove="SetIcons\tm12.png" />
+    <None Remove="SetIcons\tm13.png" />
+    <None Remove="SetIcons\tm14.png" />
+    <None Remove="SetIcons\tm15.png" />
+    <None Remove="SetIcons\tm19.png" />
+    <None Remove="SetIcons\tm20.png" />
+    <None Remove="SetIcons\tm21.png" />
+    <None Remove="SetIcons\tmbs.png" />
+    <None Remove="SetIcons\tmd1.png" />
+    <None Remove="SetIcons\tmed.png" />
+    <None Remove="SetIcons\tmh1.png" />
+    <None Remove="SetIcons\tmh2.png" />
+    <None Remove="SetIcons\tmm2.png" />
+    <None Remove="SetIcons\tmm3.png" />
+    <None Remove="SetIcons\tmma.png" />
+    <None Remove="SetIcons\tmor.png" />
+    <None Remove="SetIcons\tmp.png" />
+    <None Remove="SetIcons\tnph.png" />
+    <None Remove="SetIcons\togw.png" />
+    <None Remove="SetIcons\tor.png" />
+    <None Remove="SetIcons\tori.png" />
+    <None Remove="SetIcons\tpca.png" />
+    <None Remove="SetIcons\tpr.png" />
+    <None Remove="SetIcons\trix.png" />
+    <None Remove="SetIcons\trna.png" />
+    <None Remove="SetIcons\troe.png" />
+    <None Remove="SetIcons\trtr.png" />
+    <None Remove="SetIcons\tsb.png" />
+    <None Remove="SetIcons\tshm.png" />
+    <None Remove="SetIcons\tsoi.png" />
+    <None Remove="SetIcons\tsom.png" />
+    <None Remove="SetIcons\tsp.png" />
+    <None Remove="SetIcons\tsr.png" />
+    <None Remove="SetIcons\tstx.png" />
+    <None Remove="SetIcons\tthb.png" />
+    <None Remove="SetIcons\tths.png" />
+    <None Remove="SetIcons\ttsr.png" />
+    <None Remove="SetIcons\tugl.png" />
+    <None Remove="SetIcons\tuma.png" />
+    <None Remove="SetIcons\tund.png" />
+    <None Remove="SetIcons\tust.png" />
+    <None Remove="SetIcons\twar.png" />
+    <None Remove="SetIcons\twwk.png" />
+    <None Remove="SetIcons\txln.png" />
+    <None Remove="SetIcons\tzen.png" />
+    <None Remove="SetIcons\tznc.png" />
+    <None Remove="SetIcons\tznr.png" />
+    <None Remove="SetIcons\uds.png" />
+    <None Remove="SetIcons\ugin.png" />
+    <None Remove="SetIcons\ugl.png" />
+    <None Remove="SetIcons\ulg.png" />
+    <None Remove="SetIcons\uma.png" />
+    <None Remove="SetIcons\und.png" />
+    <None Remove="SetIcons\unh.png" />
+    <None Remove="SetIcons\usg.png" />
+    <None Remove="SetIcons\ust.png" />
+    <None Remove="SetIcons\v09.png" />
+    <None Remove="SetIcons\v10.png" />
+    <None Remove="SetIcons\v11.png" />
+    <None Remove="SetIcons\v12.png" />
+    <None Remove="SetIcons\v13.png" />
+    <None Remove="SetIcons\v14.png" />
+    <None Remove="SetIcons\v15.png" />
+    <None Remove="SetIcons\v16.png" />
+    <None Remove="SetIcons\v17.png" />
+    <None Remove="SetIcons\vis.png" />
+    <None Remove="SetIcons\vma.png" />
+    <None Remove="SetIcons\w16.png" />
+    <None Remove="SetIcons\w17.png" />
+    <None Remove="SetIcons\war.png" />
+    <None Remove="SetIcons\wc00.png" />
+    <None Remove="SetIcons\wc01.png" />
+    <None Remove="SetIcons\wc02.png" />
+    <None Remove="SetIcons\wc03.png" />
+    <None Remove="SetIcons\wc04.png" />
+    <None Remove="SetIcons\wc97.png" />
+    <None Remove="SetIcons\wc98.png" />
+    <None Remove="SetIcons\wc99.png" />
+    <None Remove="SetIcons\wth.png" />
+    <None Remove="SetIcons\wwk.png" />
+    <None Remove="SetIcons\xana.png" />
+    <None Remove="SetIcons\xln.png" />
+    <None Remove="SetIcons\zen.png" />
+    <None Remove="SetIcons\znc.png" />
+    <None Remove="SetIcons\zne.png" />
+    <None Remove="SetIcons\znr.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="CardImages\back.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Scryfall_sets.json">
+    <Content Include="SetIcons\10e.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\2ed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\2xm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\3ed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\4bb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\4ed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\5dn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\5ed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\6ed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\7ed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\8ed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\9ed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\a25.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\aer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\afr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ajmp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\akh.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\akhm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\akr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ala.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\all.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\amh1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\amh2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ana.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\anb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\apc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\arb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\arc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\arn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\astx.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ath.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\atq.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\avr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\aznr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\bbd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\bfz.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\bng.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\bok.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\brb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\btd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\c13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\c14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\c15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\c16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\c17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\c18.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\c19.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\c20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\c21.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\cc1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ced.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\cei.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\chk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\chr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\cm1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\cm2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\cma.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\cmb1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\cmd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\cmr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\cn2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\cns.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\cp1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\cp2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\cp3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\csp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\cst.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\dd1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\dd2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\dde.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddh.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddi.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddj.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddl.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddq.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\dds.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ddu.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\dgm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\dis.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\dka.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\dkm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\dom.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\dpa.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\drb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\drk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\dst.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\dtk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\dvd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\e01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\e02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\eld.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ema.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\emn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\eve.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\evg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\exo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\exp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f04.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f05.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f06.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f07.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f08.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f09.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\f18.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\fbb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\fem.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\fjmp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\fmb1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\fnm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\frf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\fut.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\g00.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\g01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\g02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\g03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\g04.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\g05.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\g06.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\g07.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\g08.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\g09.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\g10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\g11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\g17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\g18.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\g99.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\gk1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\gk2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\gn2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\gnt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\gpt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\grn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\gs1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\gtc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\gvl.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\h09.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\h17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\h1r.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ha1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ha2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ha3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ha4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ha5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\hho.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\hml.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\hop.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\hou.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\htr16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\htr17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\htr18.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\htr19.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ice.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\iko.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ima.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\inv.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\isd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\itp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\j12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\j13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\j14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\j15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\j16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\j17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\j18.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\j19.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\j20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\j21.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\jgp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\jmp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\jou.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\jud.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\jvc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\khc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\khm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\kld.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\klr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ktk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\l12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\l13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\l14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\l15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\l16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\l17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\lea.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\leb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\leg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\lgn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\lrw.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\m10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\m11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\m12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\m13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\m14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\m15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\m19.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\m20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\m21.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\mb1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\mbs.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\md1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\me1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\me2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\me3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\me4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\med.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\mgb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\mh1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\mh2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\mir.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\mm2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\mm3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\mma.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\mmq.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\mor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\mp2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\mpr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\mps.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\mrd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\mznr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\nem.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\nph.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\oana.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\oarc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\oc13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\oc14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\oc15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\oc16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\oc17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\oc18.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\oc19.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\oc20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\oc21.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ocm1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ocmd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ody.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\oe01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ogw.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ohop.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\olgc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ons.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\opc2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\opca.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ori.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ovnt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\p02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\p03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\p04.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\p05.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\p06.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\p07.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\p08.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\p09.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\p10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\p10e.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\p11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\p15a.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\p2hg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\p5dn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\p8ed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\p9ed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\paer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pakh.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pal00.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pal01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pal02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pal03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pal04.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pal05.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pal06.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pal99.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pala.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\palp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pana.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\papc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\parb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\parc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\parl.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\past.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pavr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pbbd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pbfz.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pbng.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pbok.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pbook.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pc2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pc20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pca.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pcel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pchk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pcmd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pcmp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pcns.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pcsp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pcy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pd2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pd3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pdgm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pdis.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pdka.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pdom.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pdp10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pdp12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pdp13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pdp14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pdp15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pdrc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pdst.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pdtk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pdtp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\peld.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pelp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pemn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\peve.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pexo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pf19.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pf20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pfrf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pfut.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pg07.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pg08.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pgpt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pgpx.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pgrn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pgru.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pgtc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pgtw.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\phel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\phj.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\phop.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\phou.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\phpr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\phuk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pi13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pi14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pidw.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\piko.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pinv.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pisd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pjas.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pjjt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pjou.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pjse.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pjud.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pkhm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pkld.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pktk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pl21.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\plc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\plgm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\plgn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\plgs.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\plist.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\plny.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\plrw.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pls.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pm10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pm11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pm12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pm13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pm14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pm15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pm19.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pm20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pm21.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pmbs.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pmei.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pmh1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pmic.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pmmq.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pmoa.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pmor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pmps.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pmps06.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pmps07.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pmps08.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pmps09.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pmps10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pmps11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pmrd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pnat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pnem.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pnph.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pody.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pogw.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pons.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\por.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pori.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ppc1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ppcy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pplc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ppls.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ppod.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ppp1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ppro.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pptk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pr2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\prav.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pred.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pres.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\prix.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\prm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\prna.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\proe.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\prtr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\prw2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\prwk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ps11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ps14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ps15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ps16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ps17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ps18.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ps19.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\psal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pscg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\psdc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\psdg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pshm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\psoi.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\psok.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\psom.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pss1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pss2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pss3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\psth.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pstx.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\psum.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\psus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ptc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ptg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pthb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pths.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ptk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ptkdf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ptmp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ptor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ptsp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\puds.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pulg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\puma.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\punh.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\purl.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pusg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pust.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pvan.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pwar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pwcq.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pwor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pwos.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pwp09.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pwp10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pwp11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pwp12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pwp21.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pwpn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pwwk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pxln.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pxtc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pz1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pz2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pzen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\pznr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\rav.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ren.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\rin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\rix.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\rna.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\roe.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\rqs.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\rtr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\s00.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\s99.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\scg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\shm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\sld.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\slu.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\soi.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\sok.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\som.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ss1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ss2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ss3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\sta.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\sth.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\stx.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\sum.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\sznr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\t10e.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\t2xm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ta25.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\taer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\takh.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tala.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tarb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tavr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tbbd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tbfz.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tbng.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tbth.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tc14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tc15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tc16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tc17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tc18.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tc19.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tc20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tc21.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tcm2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tcma.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tcmr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tcn2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tcns.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\td0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\td2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tdag.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tdd1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tdd2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tddc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tddd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tdde.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tddf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tddg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tddh.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tddi.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tddj.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tddk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tddl.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tddm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tdds.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tddt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tddu.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tdgm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tdka.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tdom.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tdtk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tdvd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\te01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\teld.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tema.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\temn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\teve.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tevg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tfrf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tfth.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tgk1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tgk2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tgn2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tgrn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tgtc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tgvl.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\thb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\thou.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\thp1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\thp2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\thp3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ths.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tiko.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tima.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tisd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tjou.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tjvc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tkhc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tkhm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tkld.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tktk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tlrw.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tm10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tm11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tm12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tm13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tm14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tm15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tm19.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tm20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tm21.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tmbs.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tmd1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tmed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tmh1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tmh2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tmm2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tmm3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tmma.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tmor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tmp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tnph.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\togw.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tori.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tpca.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tpr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\trix.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\trna.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\troe.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\trtr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tsb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tshm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tsoi.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tsom.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tsp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tsr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tstx.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tthb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tths.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ttsr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tugl.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tuma.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tund.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tust.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\twar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\twwk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\txln.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tzen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tznc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\tznr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\uds.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ugin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ugl.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ulg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\uma.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\und.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\unh.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\usg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\ust.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\v09.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\v10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\v11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\v12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\v13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\v14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\v15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\v16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\v17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\vis.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\vma.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\w16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\w17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\war.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\wc00.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\wc01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\wc02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\wc03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\wc04.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\wc97.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\wc98.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\wc99.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\wth.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\wwk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\xana.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\xln.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\zen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\znc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\zne.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetIcons\znr.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -27,7 +2735,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="SharpVectors" Version="1.7.5" />
+    <PackageReference Include="Svg" Version="3.2.3" />
   </ItemGroup>
 
 </Project>

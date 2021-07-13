@@ -2,14 +2,22 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:MTG"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="800"
       Title="DeckBuilding"
       Background="GhostWhite">
-    <Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Deck Testing" Click="DeckTestingButton_Click" />
+            </MenuItem>
+            <MenuItem Header="_Update">
+                <MenuItem Header="Update set icons" Click="UpdateMenuIconsMenuItem_Click" />
+                <MenuItem Header="Update set list" Click="UpdateSetListMenuItem_Click" />
+            </MenuItem>
+        </Menu>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"/>
@@ -19,53 +27,86 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TabControl HorizontalAlignment="Left" Width="303" Margin="5,0,0,5" Grid.Column="1" VerticalAlignment="Bottom" SelectionChanged="SetCollectionTab_SelectionChanged">
+            <TabControl Grid.RowSpan="2" Grid.Column="1" SelectionChanged="SetCollectionTab_SelectionChanged" Margin="5,5,10,10" Background="GhostWhite">
                 <TabItem Header="Sets" x:Name="SetTab">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <ComboBox x:Name="CardSetTypeComboBox" Grid.Column="0" Margin="0,0,5,0" SelectionChanged="CardSetTypeComboBox_SelectionChanged"/>
-                        <ComboBox Grid.Column="1" x:Name="CardSetComboBox" SelectionChanged="CardSetComboBox_SelectionChanged">
-                            <ComboBox.ItemsPanel>
+                    <DockPanel>
+                        <Border DockPanel.Dock="Top" BorderThickness="0,0,0,1" BorderBrush="#FFABADB3" Margin="0,0,0,0" Padding="5,5,5,6">
+                            <StackPanel Orientation="Horizontal" >
+                                <ComboBox x:Name="CardSetTypeComboBox" Grid.Column="0" Margin="0,0,5,0" Width="200" SelectionChanged="CardSetTypeComboBox_SelectionChanged"/>
+                                <ComboBox x:Name="CardSetComboBox" Width="250" SelectionChanged="CardSetComboBox_SelectionChanged">
+                                    <ComboBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <VirtualizingStackPanel Width="250" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Standard"/>
+                                        </ItemsPanelTemplate>
+                                    </ComboBox.ItemsPanel>
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" Width="240" CanHorizontallyScroll="False">
+                                                <Image Source="{Binding Icon}" Height="16" Width="16" Margin="0,0,5,0"/>
+                                                <TextBlock Text="{Binding Name}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </StackPanel>
+                        </Border>
+                        <ListBox x:Name="CardSetImageListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" VirtualizingPanel.IsVirtualizing="False">
+                            <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <VirtualizingStackPanel Width="250" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling"/>
+                                    <WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
                                 </ItemsPanelTemplate>
-                            </ComboBox.ItemsPanel>
-                            <ComboBox.ItemTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" Width="240" CanHorizontallyScroll="False">
-                                        <svgc:SvgViewbox Source="{Binding Icon}" Height="16" Width="16" Margin="0,0,5,0"/>
-                                        <TextBlock Text="{Binding Name}"/>
-                                    </StackPanel>
+                                    <Image Source="{Binding PrimaryFaceURI}" Width="250" Margin="5" MouseRightButtonUp="CardImage_MouseRightButtonUp"/>
                                 </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                    </Grid>
+                            </ListBox.ItemTemplate>
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                                    <EventSetter Event="MouseDoubleClick" Handler="CardImage_MouseDoubleClick"/>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                        </ListBox>
+                    </DockPanel>
                 </TabItem>
                 <TabItem Header="Collections" x:Name="CollectionTab">
-                    <ComboBox x:Name="CardCollectionComboBox" SelectionChanged="CardCollectionComboBox_SelectionChanged" />
+                    <DockPanel>
+                        <Border DockPanel.Dock="Top" BorderThickness="0,0,0,1" BorderBrush="#FFABADB3" Margin="0,0,0,0" Padding="5,5,5,6">
+                            <StackPanel Orientation="Horizontal">
+                                <ComboBox DockPanel.Dock="Top" Width="250" x:Name="CardCollectionComboBox" SelectionChanged="CardCollectionComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="0,0,5,0" />
+                                <Button Content="Save" Padding="5,0,5,0" Click="SecondaryCollectionSaveButton_Click"/>
+                            </StackPanel>
+                        </Border>
+                        <Border DockPanel.Dock="Left" BorderThickness="0,0,1,0" BorderBrush="#FFABADB3" Margin="0,0,0,0" Padding="5,5,5,6">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                <Button Content="&lt;&lt;" Padding="10, 5, 10 ,5" Margin="5,0,7,7.5" Click="CollectionSwapLeftButton_Click"/>
+                                <TextBlock Text="Move" TextAlignment="Center"/>
+                                <Button Content="&gt;&gt;" Padding="10, 5, 10 ,5" Margin="5,7.5,7,0" Click="CollectionSwapRightButton_Click"/>
+                            </StackPanel>
+                        </Border>
+                        <ListBox x:Name="CardCollectionImageListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <Image Source="{Binding Card.PrimaryFaceURI}" Width="250" Margin="5" MouseRightButtonUp="CardImage_MouseRightButtonUp"/>
+                                        <TextBlock Text="{Binding Count}" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                                    <EventSetter Event="MouseDoubleClick" Handler="CollectionCardImage_MouseDoubleClick"/>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                        </ListBox>
+                    </DockPanel>
                 </TabItem>
             </TabControl>
-            <Button Grid.Column="1" Content="Deck Testing" Margin="0,10,10,10" HorizontalAlignment="Right" Width="84" Click="DeckTestingButton_Click"/>
-            <ListBox x:Name="CardSetImageListBox" Margin="5,5,10,10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Grid.Column="1">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Image Source="{Binding PrimaryFace}" Width="250" Margin="5" MouseRightButtonUp="CardImage_MouseRightButtonUp"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                        <EventSetter Event="MouseDoubleClick" Handler="CardImage_MouseDoubleClick"/>
-                    </Style>
-                </ListBox.ItemContainerStyle>
-            </ListBox>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -117,5 +158,5 @@
                 <Image x:Name="CollectionHoverImage" Grid.Row="2" Height="300" />
             </Grid>
         </Grid>
-    </Grid>
+    </DockPanel>
 </Window>

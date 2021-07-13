@@ -10,6 +10,11 @@ namespace MTG_builder
 {
     internal class IO
     {
+        public static readonly string CollectionsPath = "Resources/Collections/";
+        public static readonly string SetIconPath = "SetIcons/";
+        public static readonly string ResourcesPath = "Resources/";
+        public static readonly string SetListsFileName = "Scryfall_sets.json";
+
         public static List<CollectionCard> ReadCollectionFromFile(string path)
         {
             using StreamReader file = File.OpenText(path);
@@ -39,7 +44,7 @@ namespace MTG_builder
         {
             try
             {
-                string path = "Resources/Scryfall_sets.json";
+                string path = $"{ResourcesPath}{SetListsFileName}";
                 string json = File.ReadAllText(path);
 
                 CardSetData setBase = JsonConvert.DeserializeObject<CardSetData>(json);
@@ -81,6 +86,11 @@ namespace MTG_builder
                 cards.Add(collectionCard.Card);
             }
             return cards;
+        }
+        public static void UpdateSetLists()
+        {
+            using WebClient client = new();
+            client.DownloadFile(Scryfall.SetListsUrl, $"{ResourcesPath}{SetListsFileName}");
         }
 
         public static OpenFileDialog OpenFileDialog(string relativePath)

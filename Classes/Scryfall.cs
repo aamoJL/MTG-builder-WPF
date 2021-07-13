@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MTG_builder;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,11 @@ using System.Windows.Media.Imaging;
 
 namespace MTG.Scryfall
 {
+    public class Scryfall
+    {
+        public static readonly string SetListsUrl = "https://api.scryfall.com/sets/";
+    }
+
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
     public class Card
     {
@@ -37,9 +43,16 @@ namespace MTG.Scryfall
         public CardRarity Rarity { get; set; }
         [JsonProperty("set")]
         public string Set { get; set; }
+        [JsonIgnore]
+        [JsonProperty("legalities")]
+        public Dictionary<string, string> Legalities { get; set; }
 
         [JsonIgnore]
-        public BitmapImage PrimaryFace
+        public BitmapImage PrimaryFace => new(new Uri(PrimaryFaceURI));
+        [JsonIgnore]
+        public BitmapImage SecondaryFace => new(new Uri(SecondaryFaceURI));
+        [JsonIgnore]
+        public string PrimaryFaceURI
         {
             get
             {
@@ -47,38 +60,26 @@ namespace MTG.Scryfall
                 {
                     if (CardFaces.Count > 1 && CardFaces[0].ImageUris != null)
                     {
-                        BitmapImage bitmapImage = new();
-                        bitmapImage.BeginInit();
-                        bitmapImage.UriSource = new Uri(CardFaces[0].ImageUris["normal"]);
-                        bitmapImage.EndInit();
-                        return bitmapImage;
+                        return CardFaces[0].ImageUris["normal"];
                     }
 
                     return null;
                 }
                 else
                 {
-                    BitmapImage bitmapImage = new();
-                    bitmapImage.BeginInit();
-                    bitmapImage.UriSource = new Uri(ImageUris["normal"]);
-                    bitmapImage.EndInit();
-                    return bitmapImage;
+                    return ImageUris["normal"];
                 }
             }
         }
         [JsonIgnore]
-        public BitmapImage SecondaryFace
+        public string SecondaryFaceURI
         {
             get
             {
                 if (!HasTwoFaces) { return null; }
                 else
                 {
-                    BitmapImage bitmapImage = new();
-                    bitmapImage.BeginInit();
-                    bitmapImage.UriSource = new Uri(CardFaces[1].ImageUris["normal"]);
-                    bitmapImage.EndInit();
-                    return bitmapImage;
+                    return CardFaces[1].ImageUris["normal"];
                 }
             }
         }
@@ -116,7 +117,17 @@ namespace MTG.Scryfall
         public CardSetType SetType { get; set; }
 
         [JsonIgnore]
-        public string Icon => IconSvgUri;
+        public BitmapImage Icon
+        {
+            get
+            {
+                string path = File.Exists($"{IO.SetIconPath}{Code}.png") ? $"{IO.SetIconPath}{Code}.png" : "";
+                if(path == "") { return null; }
+                BitmapImage img = new(new Uri(Path.GetFullPath(path)));
+
+                return img;
+            }
+        }
 
         [JsonConverter(typeof(StringEnumConverter))]
         public enum CardSetType
@@ -192,19 +203,19 @@ namespace MTG.Scryfall
             Cards.Add(new ListBoxCollectionCard(card));
             UnsavedChanges = true;
         }
-        public void AddCard(CollectionCard card)
+        public void AddCard(CollectionCard card, int count = 1)
         {
             foreach (CollectionCard collectionCard in Cards)
             {
                 if (collectionCard.Card.Id == card.Card.Id)
                 {
-                    collectionCard.Count++;
+                    collectionCard.Count += count;
                     UnsavedChanges = true;
                     return;
                 }
             }
 
-            Cards.Add(new ListBoxCollectionCard(card));
+            Cards.Add(new ListBoxCollectionCard(card, count));
             UnsavedChanges = true;
         }
         public void RemoveCard(CollectionCard card)
@@ -271,7 +282,7 @@ namespace MTG.Scryfall
     public class ListBoxCollectionCard : CollectionCard, INotifyPropertyChanged
     {
         public ListBoxCollectionCard(Card card, int count = 1) : base(card, count) { }
-        public ListBoxCollectionCard(CollectionCard card) : base(card.Card, card.Count) { }
+        public ListBoxCollectionCard(CollectionCard card, int count = 1) : base(card.Card, count) { }
 
         public override int Count
         {
