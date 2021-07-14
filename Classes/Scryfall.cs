@@ -242,7 +242,7 @@ namespace MTG.Scryfall
             Cards.Clear();
             for (int i = 0; i < cards.Count; i++)
             {
-                Cards.Add(new ListBoxCollectionCard(cards[i]));
+                Cards.Add(new ListBoxCollectionCard(cards[i], cards[i].Count));
             }
 
             UnsavedChanges = false;

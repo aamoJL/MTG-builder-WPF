@@ -178,7 +178,7 @@ namespace MTG
         {
             CollectionHoverImage.Source = null;
         }
-
+        
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             if (CollectionListBox.SelectedItem is CollectionCard card)
