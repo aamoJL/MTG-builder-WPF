@@ -34,7 +34,7 @@ namespace MTG.Scryfall
         [JsonProperty("cmc")]
         public decimal CMC { get; set; }
         [JsonProperty("color_identity")]
-        public List<CardColors> ColorIdentity { get; set; }
+        public List<CardColor> ColorIdentity { get; set; }
         [JsonProperty("keywords")]
         public List<string> Keywords { get; set; }
         [JsonProperty("type_line")]
@@ -85,15 +85,16 @@ namespace MTG.Scryfall
         }
         [JsonIgnore]
         public bool HasTwoFaces => ImageUris == null && CardFaces != null;
+        public CardColor GetColorIdentity => ColorIdentity.Count == 0 ? CardColor.Colorless : ColorIdentity.Count > 1 ? CardColor.Multicolor : ColorIdentity[0];
 
         //Gameplay
         [JsonIgnore]
         public bool Tapped { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public enum CardColors
+        public enum CardColor
         {
-            W, U, B, R, G
+            W, U, B, R, G, Colorless, Multicolor
         }
         [JsonConverter(typeof(StringEnumConverter))]
         public enum CardRarity
@@ -253,6 +254,11 @@ namespace MTG.Scryfall
             SaveCollectionToFile(path);
             UnsavedChanges = false;
         }
+        public void Sort()
+        {
+            ChangeCollection(Cards.OrderBy(x => x.Card.GetColorIdentity).ThenBy(x => x.Card.CMC).Cast<CollectionCard>().ToList(), Name);
+            UnsavedChanges = true;
+        }
 
         private void SaveCollectionToFile(string path)
         {
@@ -281,8 +287,10 @@ namespace MTG.Scryfall
 
     public class ListBoxCollectionCard : CollectionCard, INotifyPropertyChanged
     {
-        public ListBoxCollectionCard(Card card, int count = 1) : base(card, count) { }
-        public ListBoxCollectionCard(CollectionCard card, int count = 1) : base(card.Card, count) { }
+        public ListBoxCollectionCard(Card card, int count = 1) : base(card, count) { Visible = true; }
+        public ListBoxCollectionCard(CollectionCard card, int count = 1) : base(card.Card, count) { Visible = true; }
+
+        private bool visible = true;
 
         public override int Count
         {
@@ -293,6 +301,7 @@ namespace MTG.Scryfall
                 OnPropertyChanged();
             }
         }
+        public bool Visible { get => visible; set { visible = value; OnPropertyChanged(); } }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -305,7 +314,7 @@ namespace MTG.Scryfall
     public class CardFace
     {
         [JsonProperty("colors")]
-        public List<Card.CardColors> Colors { get; set; }
+        public List<Card.CardColor> Colors { get; set; }
         [JsonProperty("image_uris")]
         public Dictionary<string, string> ImageUris { get; set; }
         [JsonProperty("name")]

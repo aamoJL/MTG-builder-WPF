@@ -75,6 +75,15 @@
                             <StackPanel Orientation="Horizontal">
                                 <ComboBox DockPanel.Dock="Top" Width="250" x:Name="CardCollectionComboBox" SelectionChanged="CardCollectionComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="0,0,5,0" />
                                 <Button Content="Save" Padding="5,0,5,0" Click="SecondaryCollectionSaveButton_Click"/>
+                                <Button Content="Sort" Padding="5,0,5,0" Click="CollectionSortButton_Click" Margin="10,0,0,0"/>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
+                                    <CheckBox x:Name="WhiteCheck" Content="White" Click="CollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0" />
+                                    <CheckBox x:Name="BlueCheck" Content="Blue" Click="CollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0"/>
+                                    <CheckBox x:Name="BlackCheck" Content="Black" Click="CollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0"/>
+                                    <CheckBox x:Name="RedCheck" Content="Red" Click="CollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0"/>
+                                    <CheckBox x:Name="GreenCheck" Content="Green" Click="CollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0"/>
+                                    <CheckBox x:Name="ColorlessCheck" Content="Colorless" Click="CollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0"/>
+                                </StackPanel>
                             </StackPanel>
                         </Border>
                         <Border DockPanel.Dock="Left" BorderThickness="0,0,1,0" BorderBrush="#FFABADB3" Margin="0,0,0,0" Padding="5,5,5,6">
@@ -101,6 +110,11 @@
                             <ListBox.ItemContainerStyle>
                                 <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                                     <EventSetter Event="MouseDoubleClick" Handler="CollectionCardImage_MouseDoubleClick"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Visible}" Value="False">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
                                 </Style>
                             </ListBox.ItemContainerStyle>
                         </ListBox>

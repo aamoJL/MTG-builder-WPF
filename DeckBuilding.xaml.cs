@@ -104,13 +104,13 @@ namespace MTG
             if (collectionCards != null)
             {
                 secondaryCardCollection.ChangeCollection(collectionCards, collectionName);
-                //CardCollectionImageListBox.ItemsSource = collectionCards;
             }
             else
             {
                 secondaryCardCollection.Clear();
-                //CardCollectionImageListBox.ItemsSource = null;
             }
+
+            FilterCollection(CardCollectionImageListBox);
         }
         private void CardSetTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -263,19 +263,27 @@ namespace MTG
             int selectedIndex = CardCollectionImageListBox.SelectedIndex;
             if (selectedIndex == -1) { return; }
 
-            SwapCardCollection(secondaryCardCollection, primaryCardCollection, selectedIndex);
+            SwapCardBetweenCollections(secondaryCardCollection, primaryCardCollection, selectedIndex);
         }
         private void CollectionSwapRightButton_Click(object sender, RoutedEventArgs e)
         {
             int selectedIndex = CollectionListBox.SelectedIndex;
             if (selectedIndex == -1 || secondaryCardCollection.Name == "") { return; }
 
-            SwapCardCollection(primaryCardCollection, secondaryCardCollection, selectedIndex);
+            SwapCardBetweenCollections(primaryCardCollection, secondaryCardCollection, selectedIndex);
         }
         private void SecondaryCollectionSaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (secondaryCardCollection.Name == "") { return; }
             secondaryCardCollection.Save($"{IO.CollectionsPath}{secondaryCardCollection.Name}.json");
+        }
+        private void CollectionColorFilterCheck_Click(object sender, RoutedEventArgs e)
+        {
+            FilterCollection(CardCollectionImageListBox);
+        }
+        private void CollectionSortButton_Click(object sender, RoutedEventArgs e)
+        {
+            secondaryCardCollection.Sort();
         }
 
         private void CreateNewCollection()
@@ -366,12 +374,42 @@ namespace MTG
         {
             return setList.Where(x => types.Contains(x.SetType)).ToList();
         }
-        private static void SwapCardCollection(CardCollection fromCollection, CardCollection toCollection, int fromIndex)
+        private static void SwapCardBetweenCollections(CardCollection fromCollection, CardCollection toCollection, int fromIndex)
         {
             CollectionCard card = fromCollection.Cards[fromIndex];
 
             toCollection.AddCard(card);
             fromCollection.RemoveCard(card);
+        }
+        private void FilterCollection(ListBox listbox)
+        {
+            List<Card.CardColor> colorFilters = new();
+            if (WhiteCheck.IsChecked == false) { colorFilters.Add(Card.CardColor.W); }
+            if (BlueCheck.IsChecked == false) { colorFilters.Add(Card.CardColor.U); }
+            if (BlackCheck.IsChecked == false) { colorFilters.Add(Card.CardColor.B); }
+            if (RedCheck.IsChecked == false) { colorFilters.Add(Card.CardColor.R); }
+            if (GreenCheck.IsChecked == false) { colorFilters.Add(Card.CardColor.G); }
+            if (ColorlessCheck.IsChecked == false) { colorFilters.Add(Card.CardColor.Colorless); }
+
+            foreach (ListBoxCollectionCard listBoxCard in listbox.Items)
+            {
+                if(listBoxCard.Card.GetColorIdentity != Card.CardColor.Multicolor)
+                {
+                    listBoxCard.Visible = !colorFilters.Contains(listBoxCard.Card.GetColorIdentity);
+                }
+                else
+                {
+                    listBoxCard.Visible = true;
+                    foreach (Card.CardColor filter in colorFilters)
+                    {
+                        if (listBoxCard.Card.ColorIdentity.Contains(filter))
+                        {
+                            listBoxCard.Visible = false;
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
         private void UpdateMenuIconsMenuItem_Click(object sender, RoutedEventArgs e)
