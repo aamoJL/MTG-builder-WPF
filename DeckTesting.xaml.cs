@@ -3,6 +3,7 @@ using MTG;
 using MTG.Scryfall;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -400,6 +401,16 @@ namespace MTG_builder
         }
         #endregion
 
+        private void PlayerLife_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            TextBlock textBlock = sender as TextBlock;
+            if (int.TryParse(textBlock.Text, out int lifeCount))
+            {
+                lifeCount += e.Delta > 0 ? 1 : -1;
+                textBlock.Text = lifeCount.ToString(new CultureInfo("en-us"));
+            }
+        }
+
         private void SelectDeck(string name, List<CollectionCard> cards, int deckNumber)
         {
             if (deckNumber == 1)
@@ -540,5 +551,6 @@ namespace MTG_builder
             // Set the behavior to return visuals at all z-order levels.
             return HitTestResultBehavior.Continue;
         }
+
     }
 }
