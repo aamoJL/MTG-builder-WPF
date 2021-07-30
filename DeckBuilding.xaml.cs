@@ -2,15 +2,11 @@
 using MTG.Scryfall;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Linq;
 using MTG_builder;
-using System.Net;
-using Svg;
-using System.Drawing.Imaging;
+using System.Globalization;
 
 namespace MTG
 {
@@ -19,149 +15,119 @@ namespace MTG
     /// </summary>
     public partial class DeckBuilding : Window
     {
-        private string selectedCollectionPath = "";
         private readonly CardCollection primaryCardCollection = new();
         private readonly CardCollection secondaryCardCollection = new();
 
         public DeckBuilding()
         {
             InitializeComponent();
-
-            _ = Directory.CreateDirectory(IO.CollectionsPath);
-            _ = Directory.CreateDirectory(IO.SetIconPath);
-
+            IO.InitDirectories();
             IO.UpdateSetLists();
 
-            CollectionListBox.ItemsSource = primaryCardCollection.Cards;
-            CardCollectionImageListBox.ItemsSource = secondaryCardCollection.Cards;
+            // Subscribe to events
+            primaryCardCollection.CollectionChanged += PrimaryCardCollection_CollectionChanged;
+            secondaryCardCollection.CollectionChanged += SecondaryCardCollection_CollectionChanged;
 
-            // Get card sets from a file and add them to combobox
-            CardSetComboBox.ItemsSource = IO.GetCardSets();
-
-            // Get collection names from a file and add them to combobox
-            CardCollectionComboBox.ItemsSource = IO.GetCollectionNames(IO.CollectionsPath);
-
+            // Add item sources
+            PrimaryCollectionListBox.ItemsSource = primaryCardCollection.Cards;
+            SecondaryCollectionListBox.ItemsSource = secondaryCardCollection.Cards;
+            CardSetsComboBox.ItemsSource = IO.GetCardSets();
+            CardCollectionsComboBox.ItemsSource = IO.GetJsonFileNames(IO.CollectionsPath);
             CardSetTypeComboBox.ItemsSource = CardSet.GetSetTypes();
+
+            // Set cardset type combobox's selected item to "Expansion"
             CardSetTypeComboBox.SelectedIndex = 1;
         }
 
-        private void AddCardToCollection(Card card)
+        #region Subscribed Events
+        private void PrimaryCardCollection_CollectionChanged(object sender, EventArgs e)
         {
-            primaryCardCollection.AddCard(card);
+            // Change primary collection name to textblock
+            CollectionTextBlock.Text = primaryCardCollection.Name != "" ? primaryCardCollection.Name : "Unsaved Collection";
         }
-        private void AddCardToCollection(CollectionCard card, int count = 1)
+        private void SecondaryCardCollection_CollectionChanged(object sender, EventArgs e)
         {
-            primaryCardCollection.AddCard(card, count);
         }
-        private void RemoveCardFromCollection(CollectionCard card)
-        {
-            primaryCardCollection.RemoveCard(card);
-        }
-        private void SaveCollection(string path)
-        {
-            if (primaryCardCollection.Name == "")
-            {
-                // Create new collection if collections has not been selected
-                CopyCollection();
-            }
-            else
-            {
-                primaryCardCollection.Save(path);
-            }
-        }
-        private void ChangeCollection(string path)
-        {
-            List<CollectionCard> cards = IO.ReadCollectionFromFile(path);
-            string collectionsName = Path.GetFileNameWithoutExtension(path);
+        #endregion
 
-            primaryCardCollection.ChangeCollection(cards, collectionsName);
-            CollectionTextBlock.Text = collectionsName;
-            selectedCollectionPath = path;
-        }
-
-        private void SetCollectionTab_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (CollectionTab.IsSelected)
-            {
-                CardCollectionComboBox.ItemsSource = IO.GetCollectionNames(IO.CollectionsPath);
-            }
-        }
+        #region Tab Control Events
         private void CardSetComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(CardSetComboBox.SelectedIndex == -1) { return; }
-            CardSet set = CardSetComboBox.SelectedItem as CardSet;
+            if (CardSetsComboBox.SelectedIndex == -1) { return; }
 
-            List<Card> cards = IO.FetchScryfallSetCards(set.SearchUri);
+            // Set card set listbox items to selected set's cards
+            CardSet set = CardSetsComboBox.SelectedItem as CardSet;
+            List<Card> cards = ScryfallAPI.FetchScryfallSetCards(set.SearchUri);
             CardSetImageListBox.ItemsSource = cards;
         }
-        private void CardCollectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CardCollectionsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(CardCollectionComboBox.SelectedIndex == -1) { return; }
-            string collectionName = CardCollectionComboBox.SelectedItem.ToString();
+            if (CardCollectionsComboBox.SelectedIndex == -1) { return; }
 
+            // Change secondary collection to selected collection
+            string collectionName = CardCollectionsComboBox.SelectedItem.ToString();
             List<CollectionCard> collectionCards = IO.ReadCollectionFromFile($"{IO.CollectionsPath}{collectionName}.json");
 
             if (collectionCards != null)
             {
                 secondaryCardCollection.ChangeCollection(collectionCards, collectionName);
             }
-            else
-            {
-                secondaryCardCollection.Clear();
-            }
+            else { secondaryCardCollection.ChangeCollection(new List<CollectionCard>(), ""); }
 
-            FilterCollection(CardCollectionImageListBox);
+            // Filter unselected colors
+            secondaryCardCollection.FilterCollection(GetSecondaryCollectionColorFilters());
         }
         private void CardSetTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CardSetComboBox.ItemsSource = FilterCardSetList(IO.GetCardSets(), new CardSet.CardSetType[] { (CardSet.CardSetType)CardSetTypeComboBox.SelectedItem });
+            // Change cardset items to selected type
+            CardSetsComboBox.ItemsSource = GetFilteredCardSetList(IO.GetCardSets(), (CardSet.CardSetType)CardSetTypeComboBox.SelectedItem);
         }
-        private void CollectionListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CardCollectionsComboBox_DropDownOpened(object sender, EventArgs e)
         {
-            CollectionSelectedImage.Source = ((CollectionCard)CollectionListBox.SelectedItem)?.Card.PrimaryFace;
+            // Get card collection names
+            CardCollectionsComboBox.ItemsSource = IO.GetJsonFileNames(IO.CollectionsPath);
         }
+        #endregion
 
-        private void CardImage_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        #region Listbox Events
+        private void PrimaryCollectionListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Change collection image display to selected card's image
+            PrimaryCollectionSelectedImage.Source = ((CollectionCard)PrimaryCollectionListBox.SelectedItem)?.Card.PrimaryFace;
+        }
+        private void SecondaryCollectionCardImage_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             //Only double left click
             if (e.ChangedButton != MouseButton.Left) { return; }
 
-            if (CardSetImageListBox.SelectedItem is Card card)
-            {
-                AddCardToCollection(card);
-            }
-        }
-        private void CollectionCardImage_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            //Only double left click
-            if (e.ChangedButton != MouseButton.Left) { return; }
-
+            // Add card to primary collection when secondary collection's card has been double clicked
             if ((sender as ListBoxItem).DataContext is CollectionCard collectionCard)
             {
-                AddCardToCollection(collectionCard);
+                primaryCardCollection.AddCard(collectionCard);
             }
-            else if((sender as ListBoxItem).DataContext is Card card)
+            else if ((sender as ListBoxItem).DataContext is Card card)
             {
-                AddCardToCollection(card);
+                primaryCardCollection.AddCard(card);
             }
         }
         private void CardImage_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
+            // Change card image to card's flip side if card has two faces
             if (sender is Image img)
             {
-                if(img.DataContext is Card card)
+                if (img.DataContext is Card card)
                 {
                     if (card.HasTwoFaces)
                     {
-                        string currentSource = img.Source.ToString();
+                        string currentSource = img.Source.ToString(new CultureInfo("en-us"));
                         img.Source = card.CardFaces[0].ImageUris["normal"] == currentSource ? card.SecondaryFace : card.PrimaryFace;
                     }
                 }
-                else if(img.DataContext is CollectionCard collectionCard)
+                else if (img.DataContext is CollectionCard collectionCard)
                 {
                     if (collectionCard.Card.HasTwoFaces)
                     {
-                        string currentSource = img.Source.ToString();
+                        string currentSource = img.Source.ToString(new CultureInfo("en-us"));
                         img.Source = collectionCard.Card.CardFaces[0].ImageUris["normal"] == currentSource ? collectionCard.Card.SecondaryFace : collectionCard.Card.PrimaryFace;
                     }
                 }
@@ -169,219 +135,155 @@ namespace MTG
         }
         private void CollectionCard_MouseEnter(object sender, MouseEventArgs e)
         {
+            // Show display image of the card when mouse is over it
             if (((ListBoxItem)sender).DataContext is CollectionCard collectionCard)
             {
-                CollectionHoverImage.Source = collectionCard.Card.PrimaryFace;
+                PrimaryCollectionHoverImage.Source = collectionCard.Card.PrimaryFace;
             }
         }
         private void CollectionCard_MouseLeave(object sender, MouseEventArgs e)
         {
-            CollectionHoverImage.Source = null;
+            // Hide card display image when mouse leaves the card
+            PrimaryCollectionHoverImage.Source = null;
         }
-        
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (CollectionListBox.SelectedItem is CollectionCard card)
-            {
-                AddCardToCollection(card);
-            }
-        }
-        private void RemoveButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (CollectionListBox.SelectedItem is CollectionCard card)
-            {
-                RemoveCardFromCollection(card);
-            }
-        }
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            SaveCollection(selectedCollectionPath);
-        }
-        private void SaveAsButton_Click(object sender, RoutedEventArgs e)
-        {
-            CopyCollection();
-        }
-        private void OpenCollectionButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (primaryCardCollection.UnsavedChanges)
-            {
-                MessageBoxResult message = UnsavedChangesDialog();
-                switch (message)
-                {
-                    case MessageBoxResult.Cancel:
-                        return;
-                    case MessageBoxResult.Yes:
-                        SaveCollection(selectedCollectionPath);
-                        break;
-                    case MessageBoxResult.No:
-                    case MessageBoxResult.None:
-                    case MessageBoxResult.OK:
-                    default:
-                        break;
-                }
-            }
+        #endregion
 
-            OpenFileDialog openFileDialog = new();
-            openFileDialog.Filter = "Text files (*.json)|*.json|All files (*.*)|*.*";
-            string CombinedPath = Path.Combine(Directory.GetCurrentDirectory(), IO.CollectionsPath);
-            openFileDialog.InitialDirectory = Path.GetFullPath(CombinedPath);
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                ChangeCollection(openFileDialog.FileName);
-            }
-        }
-        private void NewCollectionButton_Click(object sender, RoutedEventArgs e)
+        #region Menu item Events
+        private void DeckTestingMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            if (primaryCardCollection.UnsavedChanges)
-            {
-                MessageBoxResult message = UnsavedChangesDialog();
-                switch (message)
-                {
-                    case MessageBoxResult.Cancel:
-                        return;
-                    case MessageBoxResult.Yes:
-                        SaveCollection(selectedCollectionPath);
-                        break;
-                    case MessageBoxResult.No:
-                    case MessageBoxResult.None:
-                    case MessageBoxResult.OK:
-                    default:
-                        break;
-                }
-            }
-
-            CreateNewCollection();
-        }
-        private void DeckTestingButton_Click(object sender, RoutedEventArgs e)
-        {
+            // Open deck testing window
             DeckTesting deckTestingWindow = new();
             deckTestingWindow.Show();
         }
-        private void CollectionSwapLeftButton_Click(object sender, RoutedEventArgs e)
+        private void UpdateMenuIconsMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            int selectedIndex = CardCollectionImageListBox.SelectedIndex;
-            if (selectedIndex == -1) { return; }
+            IO.DownloadAndConvertSetIconSVGs();
+        }
+        private void UpdateSetListMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            IO.UpdateSetLists();
 
-            SwapCardBetweenCollections(secondaryCardCollection, primaryCardCollection, selectedIndex);
+            CardSetsComboBox.ItemsSource = IO.GetCardSets();
         }
-        private void CollectionSwapRightButton_Click(object sender, RoutedEventArgs e)
-        {
-            int selectedIndex = CollectionListBox.SelectedIndex;
-            if (selectedIndex == -1 || secondaryCardCollection.Name == "") { return; }
+        #endregion
 
-            SwapCardBetweenCollections(primaryCardCollection, secondaryCardCollection, selectedIndex);
-        }
-        private void SecondaryCollectionSaveButton_Click(object sender, RoutedEventArgs e)
+        #region Primary Collection Events
+        private void PrimaryCollectionSaveAsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (secondaryCardCollection.Name == "") { return; }
-            secondaryCardCollection.Save($"{IO.CollectionsPath}{secondaryCardCollection.Name}.json");
+            primaryCardCollection.SaveAsWithDialog("CopyCollection");
         }
-        private void CollectionColorFilterCheck_Click(object sender, RoutedEventArgs e)
+        private void PrimaryCollectionOpenButton_Click(object sender, RoutedEventArgs e)
         {
-            FilterCollection(CardCollectionImageListBox);
+            if (primaryCardCollection.UnsavedChanges)
+            {
+                MessageBoxResult message = IO.UnsavedChangesDialog();
+                switch (message)
+                {
+                    case MessageBoxResult.Cancel:
+                        return;
+                    case MessageBoxResult.Yes:
+                        primaryCardCollection.Save();
+                        break;
+                    case MessageBoxResult.No:
+                    case MessageBoxResult.None:
+                    case MessageBoxResult.OK:
+                    default:
+                        break;
+                }
+            }
+
+            OpenFileDialog openFileDialog = IO.OpenFileDialog(IO.CollectionsPath);
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                primaryCardCollection.ChangeCollectionFromFile(openFileDialog.FileName);
+            }
         }
-        private void CollectionSortButton_Click(object sender, RoutedEventArgs e)
+        private void PrimaryCollectionNewButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (primaryCardCollection.UnsavedChanges)
+            {
+                MessageBoxResult message = IO.UnsavedChangesDialog();
+                switch (message)
+                {
+                    case MessageBoxResult.Cancel:
+                        return;
+                    case MessageBoxResult.Yes:
+                        primaryCardCollection.Save();
+                        break;
+                    case MessageBoxResult.No:
+                    case MessageBoxResult.None:
+                    case MessageBoxResult.OK:
+                    default:
+                        break;
+                }
+            }
+
+            primaryCardCollection.ChangeCollection(new List<CollectionCard>(), "");
+        }
+        private void PrimaryCollectionSaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            primaryCardCollection.Save();
+        }
+        private void PrimaryCollectionRemoveCardButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (PrimaryCollectionListBox.SelectedItem is CollectionCard card)
+            {
+                primaryCardCollection.RemoveCard(card);
+            }
+        }
+        private void PrimaryCollectionAddCardButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (PrimaryCollectionListBox.SelectedItem is CollectionCard card)
+            {
+                primaryCardCollection.AddCard(card);
+            }
+        }
+        #endregion
+
+        #region Secondary Collection Events
+        private void SecondaryCollectionAddCardButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SecondaryCollectionListBox.SelectedItem is CollectionCard card)
+            {
+                secondaryCardCollection.AddCard(card);
+            }
+        }
+        private void SecondaryCollectionSortButton_Click(object sender, RoutedEventArgs e)
         {
             secondaryCardCollection.Sort();
         }
-
-        private void CreateNewCollection()
+        private void SecondaryCollectionColorFilterCheck_Click(object sender, RoutedEventArgs e)
         {
-            // Configure save file dialog box
-            SaveFileDialog dialog = new();
-            dialog.FileName = "NewCollection"; // Default file name
-            dialog.DefaultExt = ".json"; // Default file extension
-            dialog.InitialDirectory = Path.GetFullPath(IO.CollectionsPath);
-            dialog.Filter = "Text documents (.json)|*.json"; // Filter files by extension
-
-            // Show save file dialog box
-            bool? result = dialog.ShowDialog();
-
-            // Process save file dialog box results
-            if (result == true)
-            {
-                // Save document
-                string path = dialog.FileName;
-
-                primaryCardCollection.Clear();
-                primaryCardCollection.Name = dialog.SafeFileName;
-                SaveCollection(path);
-                ChangeCollection(path);
-            }
+            secondaryCardCollection.FilterCollection(GetSecondaryCollectionColorFilters());
         }
-        private void CopyCollection()
+        private void SecondaryCollectionSaveButton_Click(object sender, RoutedEventArgs e)
         {
-            // Configure save file dialog box
-            SaveFileDialog dialog = new();
-            dialog.FileName = "CopiedCollection"; // Default file name
-            dialog.DefaultExt = ".json"; // Default file extension
-            dialog.InitialDirectory = Path.GetFullPath(IO.CollectionsPath);
-            dialog.Filter = "Text documents (.json)|*.json"; // Filter files by extension
-
-            // Show save file dialog box
-            bool? result = dialog.ShowDialog();
-
-            // Process save file dialog box results
-            if (result == true)
-            {
-                // Save document
-                string path = dialog.FileName;
-
-                primaryCardCollection.Name = dialog.SafeFileName;
-                SaveCollection(path);
-                ChangeCollection(path);
-            }
+            secondaryCardCollection.Save();
         }
-
-        private static void DownloadAndConvertSetIconSVGs()
+        private void CollectionMoveCardRightButton_Click(object sender, RoutedEventArgs e)
         {
-            List<CardSet> cardsets = IO.GetCardSets();
-            foreach (CardSet set in cardsets)
-            {
-                string path = $"{IO.SetIconPath}{set.Code}.png";
-                if (!File.Exists(path))
-                {
-                    using WebClient webClient = new();
-                    webClient.DownloadFile(set.IconSvgUri, $"{IO.SetIconPath}temp.svg");
-                    SvgDocument svgDocument = SvgDocument.Open($"{IO.SetIconPath}temp.svg");
-                    svgDocument.Width = 32;
-                    svgDocument.Height = 32;
-                    using System.Drawing.Bitmap smallBitmap = svgDocument.Draw();
+            int selectedIndex = PrimaryCollectionListBox.SelectedIndex;
+            if (selectedIndex == -1 || secondaryCardCollection.Name == "") { return; }
 
-                    try
-                    {
-                        smallBitmap.Save(path, ImageFormat.Png);
-                    }
-                    catch (Exception) { }
-                }
-            }
+            // Move card from primary to secondary collection
+            SwapCardBetweenCollections(primaryCardCollection, secondaryCardCollection, selectedIndex);
         }
-        private static MessageBoxResult UnsavedChangesDialog()
+        private void CollectionMoveCardLeftButton_Click(object sender, RoutedEventArgs e)
         {
-            // Ask if user wants to save last collection
-            string messageBoxText = "Do you want to save changes?";
-            string caption = "Save?";
-            MessageBoxButton button = MessageBoxButton.YesNoCancel;
-            MessageBoxImage icon = MessageBoxImage.Warning;
-            MessageBoxResult result;
+            int selectedIndex = SecondaryCollectionListBox.SelectedIndex;
+            if (selectedIndex == -1) { return; }
 
-            result = MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
+            // Move card from secondary to primary collection
+            SwapCardBetweenCollections(secondaryCardCollection, primaryCardCollection, selectedIndex);
+        }
+        #endregion
 
-            return result;
-        }
-        private static List<CardSet> FilterCardSetList(List<CardSet> setList, CardSet.CardSetType[] types)
-        {
-            return setList.Where(x => types.Contains(x.SetType)).ToList();
-        }
-        private static void SwapCardBetweenCollections(CardCollection fromCollection, CardCollection toCollection, int fromIndex)
-        {
-            CollectionCard card = fromCollection.Cards[fromIndex];
-
-            toCollection.AddCard(card);
-            fromCollection.RemoveCard(card);
-        }
-        private void FilterCollection(ListBox listbox)
+        /// <summary>
+        /// Returns active color filters for the secondary card collection
+        /// </summary>
+        /// <returns>List of active color filters</returns>
+        private List<Card.CardColor> GetSecondaryCollectionColorFilters()
         {
             List<Card.CardColor> colorFilters = new();
             if (WhiteCheck.IsChecked == false) { colorFilters.Add(Card.CardColor.W); }
@@ -390,37 +292,30 @@ namespace MTG
             if (RedCheck.IsChecked == false) { colorFilters.Add(Card.CardColor.R); }
             if (GreenCheck.IsChecked == false) { colorFilters.Add(Card.CardColor.G); }
             if (ColorlessCheck.IsChecked == false) { colorFilters.Add(Card.CardColor.Colorless); }
-
-            foreach (ListBoxCollectionCard listBoxCard in listbox.Items)
-            {
-                if(listBoxCard.Card.GetColorIdentity != Card.CardColor.Multicolor)
-                {
-                    listBoxCard.Visible = !colorFilters.Contains(listBoxCard.Card.GetColorIdentity);
-                }
-                else
-                {
-                    listBoxCard.Visible = true;
-                    foreach (Card.CardColor filter in colorFilters)
-                    {
-                        if (listBoxCard.Card.ColorIdentity.Contains(filter))
-                        {
-                            listBoxCard.Visible = false;
-                            break;
-                        }
-                    }
-                }
-            }
+            return colorFilters;
         }
-
-        private void UpdateMenuIconsMenuItem_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Returns list of card sets with the given type
+        /// </summary>
+        /// <param name="setList">List of card sets</param>
+        /// <param name="type">Accepted type</param>
+        /// <returns></returns>
+        private static List<CardSet> GetFilteredCardSetList(List<CardSet> setList, CardSet.CardSetType type)
         {
-            DownloadAndConvertSetIconSVGs();
+            return setList.FindAll(x => x.SetType == type);
         }
-        private void UpdateSetListMenuItem_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Moves a card between collections
+        /// </summary>
+        /// <param name="fromCollection"></param>
+        /// <param name="toCollection"></param>
+        /// <param name="fromIndex">Card's index in the fromCollection</param>
+        private static void SwapCardBetweenCollections(CardCollection fromCollection, CardCollection toCollection, int fromIndex)
         {
-            IO.UpdateSetLists();
+            CollectionCard card = fromCollection.Cards[fromIndex];
 
-            CardSetComboBox.ItemsSource = IO.GetCardSets();
+            toCollection.AddCard(card);
+            fromCollection.RemoveCard(card);
         }
     }
 }

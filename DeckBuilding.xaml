@@ -11,7 +11,7 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_Deck Testing" Click="DeckTestingButton_Click" />
+                <MenuItem Header="_Deck Testing" Click="DeckTestingMenuItem_Click" />
             </MenuItem>
             <MenuItem Header="_Update">
                 <MenuItem Header="Update set icons" Click="UpdateMenuIconsMenuItem_Click" />
@@ -27,13 +27,13 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TabControl Grid.RowSpan="2" Grid.Column="1" SelectionChanged="SetCollectionTab_SelectionChanged" Margin="5,5,10,10" Background="GhostWhite">
+            <TabControl Grid.RowSpan="2" Grid.Column="1" Margin="5,5,10,10" Background="GhostWhite">
                 <TabItem Header="Sets" x:Name="SetTab">
                     <DockPanel>
                         <Border DockPanel.Dock="Top" BorderThickness="0,0,0,1" BorderBrush="#FFABADB3" Margin="0,0,0,0" Padding="5,5,5,6">
                             <StackPanel Orientation="Horizontal" >
                                 <ComboBox x:Name="CardSetTypeComboBox" Grid.Column="0" Margin="0,0,5,0" Width="200" SelectionChanged="CardSetTypeComboBox_SelectionChanged"/>
-                                <ComboBox x:Name="CardSetComboBox" Width="250" SelectionChanged="CardSetComboBox_SelectionChanged">
+                                <ComboBox x:Name="CardSetsComboBox" Width="250" SelectionChanged="CardSetComboBox_SelectionChanged">
                                     <ComboBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <VirtualizingStackPanel Width="250" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Standard"/>
@@ -63,7 +63,7 @@
                             </ListBox.ItemTemplate>
                             <ListBox.ItemContainerStyle>
                                 <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                                    <EventSetter Event="MouseDoubleClick" Handler="CardImage_MouseDoubleClick"/>
+                                    <EventSetter Event="MouseDoubleClick" Handler="SecondaryCollectionCardImage_MouseDoubleClick"/>
                                 </Style>
                             </ListBox.ItemContainerStyle>
                         </ListBox>
@@ -73,27 +73,28 @@
                     <DockPanel>
                         <Border DockPanel.Dock="Top" BorderThickness="0,0,0,1" BorderBrush="#FFABADB3" Margin="0,0,0,0" Padding="5,5,5,6">
                             <StackPanel Orientation="Horizontal">
-                                <ComboBox DockPanel.Dock="Top" Width="250" x:Name="CardCollectionComboBox" SelectionChanged="CardCollectionComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="0,0,5,0" />
+                                <ComboBox DockPanel.Dock="Top" Width="250" x:Name="CardCollectionsComboBox" SelectionChanged="CardCollectionsComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="0,0,5,0" DropDownOpened="CardCollectionsComboBox_DropDownOpened"/>
                                 <Button Content="Save" Padding="5,0,5,0" Click="SecondaryCollectionSaveButton_Click"/>
-                                <Button Content="Sort" Padding="5,0,5,0" Click="CollectionSortButton_Click" Margin="10,0,0,0"/>
+                                <Button Content="Sort" Padding="5,0,5,0" Click="SecondaryCollectionSortButton_Click" Margin="10,0,0,0"/>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
-                                    <CheckBox x:Name="WhiteCheck" Content="White" Click="CollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0" />
-                                    <CheckBox x:Name="BlueCheck" Content="Blue" Click="CollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0"/>
-                                    <CheckBox x:Name="BlackCheck" Content="Black" Click="CollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0"/>
-                                    <CheckBox x:Name="RedCheck" Content="Red" Click="CollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0"/>
-                                    <CheckBox x:Name="GreenCheck" Content="Green" Click="CollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0"/>
-                                    <CheckBox x:Name="ColorlessCheck" Content="Colorless" Click="CollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0"/>
+                                    <CheckBox x:Name="WhiteCheck" Content="White" Click="SecondaryCollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0" />
+                                    <CheckBox x:Name="BlueCheck" Content="Blue" Click="SecondaryCollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0"/>
+                                    <CheckBox x:Name="BlackCheck" Content="Black" Click="SecondaryCollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0"/>
+                                    <CheckBox x:Name="RedCheck" Content="Red" Click="SecondaryCollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0"/>
+                                    <CheckBox x:Name="GreenCheck" Content="Green" Click="SecondaryCollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0"/>
+                                    <CheckBox x:Name="ColorlessCheck" Content="Colorless" Click="SecondaryCollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0"/>
                                 </StackPanel>
+                                <Button Content="Add" Padding="5,0,5,0" Margin="10,0,0,0" Click="SecondaryCollectionAddCardButton_Click"/>
                             </StackPanel>
                         </Border>
                         <Border DockPanel.Dock="Left" BorderThickness="0,0,1,0" BorderBrush="#FFABADB3" Margin="0,0,0,0" Padding="5,5,5,6">
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                <Button Content="&lt;&lt;" Padding="10, 5, 10 ,5" Margin="5,0,7,7.5" Click="CollectionSwapLeftButton_Click"/>
+                                <Button Content="&lt;&lt;" Padding="10, 5, 10 ,5" Margin="5,0,7,7.5" Click="CollectionMoveCardLeftButton_Click"/>
                                 <TextBlock Text="Move" TextAlignment="Center"/>
-                                <Button Content="&gt;&gt;" Padding="10, 5, 10 ,5" Margin="5,7.5,7,0" Click="CollectionSwapRightButton_Click"/>
+                                <Button Content="&gt;&gt;" Padding="10, 5, 10 ,5" Margin="5,7.5,7,0" Click="CollectionMoveCardRightButton_Click"/>
                             </StackPanel>
                         </Border>
-                        <ListBox x:Name="CardCollectionImageListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
+                        <ListBox x:Name="SecondaryCollectionListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
@@ -109,7 +110,7 @@
                             </ListBox.ItemTemplate>
                             <ListBox.ItemContainerStyle>
                                 <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                                    <EventSetter Event="MouseDoubleClick" Handler="CollectionCardImage_MouseDoubleClick"/>
+                                    <EventSetter Event="MouseDoubleClick" Handler="SecondaryCollectionCardImage_MouseDoubleClick"/>
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Visible}" Value="False">
                                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -128,8 +129,8 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Text="Collection" Margin="10" TextAlignment="Center" FontSize="24" VerticalAlignment="Top"/>
-                <Button x:Name="OpenCollectionButton" Grid.Row="1" Margin="10,5,0,5" HorizontalAlignment="Left" Width="50" VerticalAlignment="Top" Click="OpenCollectionButton_Click">Open...</Button>
-                <Button x:Name="NewCollectionButton" Grid.Row="1" Margin="65,5,0,5" HorizontalAlignment="Left" Width="50" Click="NewCollectionButton_Click">New...</Button>
+                <Button x:Name="OpenCollectionButton" Grid.Row="1" Margin="10,5,0,5" HorizontalAlignment="Left" Width="50" VerticalAlignment="Top" Click="PrimaryCollectionOpenButton_Click">Open...</Button>
+                <Button x:Name="NewCollectionButton" Grid.Row="1" Margin="65,5,0,5" HorizontalAlignment="Left" Width="50" Click="PrimaryCollectionNewButton_Click" Content="New"/>
                 <TextBlock x:Name="CollectionTextBlock" Grid.Row="2" Text="Collection not selected" Padding="3" Margin="10,0,0,0"/>
             </Grid>
             <Grid Grid.Row="1" Margin="10,5,5,10">
@@ -138,7 +139,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <ListBox x:Name="CollectionListBox" Margin="0,0,0,5" SelectionChanged="CollectionListBox_SelectionChanged">
+                <ListBox x:Name="PrimaryCollectionListBox" Margin="0,0,0,5" SelectionChanged="PrimaryCollectionListBox_SelectionChanged">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
                             <EventSetter Event="MouseEnter" Handler="CollectionCard_MouseEnter" />
@@ -163,13 +164,13 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Button Grid.Row="0" Grid.Column="0" Margin="0,0,2.5,0" Click="AddButton_Click">Add</Button>
-                    <Button Grid.Row="0" Grid.Column="1" Margin="2.5,0,0,0" Click="RemoveButton_Click">Remove</Button>
-                    <Button Grid.Row="1" Grid.Column="0" Margin="0,5,2.5,0" Click="SaveButton_Click">Save</Button>
-                    <Button Grid.Row="1" Grid.Column="1" Margin="2.5,5,0,0" Click="SaveAsButton_Click">Save As...</Button>
+                    <Button Grid.Row="0" Grid.Column="0" Margin="0,0,2.5,0" Click="PrimaryCollectionAddCardButton_Click">Add</Button>
+                    <Button Grid.Row="0" Grid.Column="1" Margin="2.5,0,0,0" Click="PrimaryCollectionRemoveCardButton_Click">Remove</Button>
+                    <Button Grid.Row="1" Grid.Column="0" Margin="0,5,2.5,0" Click="PrimaryCollectionSaveButton_Click">Save</Button>
+                    <Button Grid.Row="1" Grid.Column="1" Margin="2.5,5,0,0" Click="PrimaryCollectionSaveAsButton_Click">Save As...</Button>
                 </Grid>
-                <Image x:Name="CollectionSelectedImage" Grid.Row="2" Height="300" />
-                <Image x:Name="CollectionHoverImage" Grid.Row="2" Height="300" />
+                <Image x:Name="PrimaryCollectionSelectedImage" Grid.Row="2" Height="300" />
+                <Image x:Name="PrimaryCollectionHoverImage" Grid.Row="2" Height="300" />
             </Grid>
         </Grid>
     </DockPanel>

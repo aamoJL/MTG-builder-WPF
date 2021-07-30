@@ -3,19 +3,48 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Windows.Media.Imaging;
 
 namespace MTG.Scryfall
 {
-    public class Scryfall
+    /// <summary>
+    /// Scryfall API
+    /// Docs: https://scryfall.com/docs/api
+    /// </summary>
+    public class ScryfallAPI
     {
         public static readonly string SetListsUrl = "https://api.scryfall.com/sets/";
+
+        /// <summary>
+        /// Returns list of cards from a card set using Scryfall API
+        /// </summary>
+        public static List<Card> FetchScryfallSetCards(string searchUri)
+        {
+            List<Card> cards = new();
+
+            using WebClient wc = new();
+
+            string json = wc.DownloadString(searchUri);
+            CardData cardData = JsonConvert.DeserializeObject<CardData>(json);
+            cards.AddRange(cardData.Data);
+
+            while (cardData.HasMore)
+            {
+                json = wc.DownloadString(cardData.NextPage);
+                cardData = JsonConvert.DeserializeObject<CardData>(json);
+                cards.AddRange(cardData.Data);
+            }
+
+            return cards;
+        }
     }
 
+    /// <summary>
+    /// MTG Card using Scryfall API
+    /// </summary>
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
     public class Card
     {
@@ -102,6 +131,9 @@ namespace MTG.Scryfall
             common, uncommon, rare, special, mythic, bonus
         }
     }
+    /// <summary>
+    /// MTG Card set using Scryfall API
+    /// </summary>
     public class CardSet
     {
         [JsonProperty("name")]
@@ -155,119 +187,17 @@ namespace MTG.Scryfall
             Memorabilia
         }
 
+        /// <summary>
+        /// Returns array of all card set types
+        /// </summary>
         public static CardSetType[] GetSetTypes()
         {
             return Enum.GetValues(typeof(CardSetType)).Cast<CardSetType>().ToArray();
         }
     }
-
-    public class CollectionCard
-    {
-        public virtual Card Card { get; set; }
-        public virtual int Count { get; set; }
-
-        public CollectionCard(Card card, int count = 1)
-        {
-            Card = card;
-            Count = count;
-        }
-    }
-    public class CardCollection
-    {
-        public string Name { get; set; }
-        public bool UnsavedChanges { get; set; }
-        public ObservableCollection<ListBoxCollectionCard> Cards { get; }
-
-        public CardCollection()
-        {
-            Cards = new ObservableCollection<ListBoxCollectionCard>();
-            Name = "";
-        }
-
-        public void Clear()
-        {
-            UnsavedChanges = true;
-            Cards.Clear();
-        }
-        public void AddCard(Card card)
-        {
-            foreach (CollectionCard collectionCard in Cards)
-            {
-                if (collectionCard.Card.Id == card.Id)
-                {
-                    collectionCard.Count++;
-                    UnsavedChanges = true;
-                    return;
-                }
-            }
-
-            Cards.Add(new ListBoxCollectionCard(card));
-            UnsavedChanges = true;
-        }
-        public void AddCard(CollectionCard card, int count = 1)
-        {
-            foreach (CollectionCard collectionCard in Cards)
-            {
-                if (collectionCard.Card.Id == card.Card.Id)
-                {
-                    collectionCard.Count += count;
-                    UnsavedChanges = true;
-                    return;
-                }
-            }
-
-            Cards.Add(new ListBoxCollectionCard(card, count));
-            UnsavedChanges = true;
-        }
-        public void RemoveCard(CollectionCard card)
-        {
-            for (int i = 0; i < Cards.Count; i++)
-            {
-                CollectionCard collectionCard = Cards[i];
-
-                if (collectionCard.Card.Id == card.Card.Id)
-                {
-                    collectionCard.Count--;
-                    if (collectionCard.Count <= 0)
-                    {
-                        Cards.RemoveAt(i);
-                    }
-                    UnsavedChanges = true;
-                    break;
-                }
-            }
-        }
-        public void ChangeCollection(List<CollectionCard> cards, string name)
-        {
-            Name = name;
-            Cards.Clear();
-            for (int i = 0; i < cards.Count; i++)
-            {
-                Cards.Add(new ListBoxCollectionCard(cards[i], cards[i].Count));
-            }
-
-            UnsavedChanges = false;
-        }
-        public void Save(string path)
-        {
-            if (Name == "" || path == "") { return; }
-            SaveCollectionToFile(path);
-            UnsavedChanges = false;
-        }
-        public void Sort()
-        {
-            ChangeCollection(Cards.OrderBy(x => x.Card.GetColorIdentity).ThenBy(x => x.Card.CMC).Cast<CollectionCard>().ToList(), Name);
-            UnsavedChanges = true;
-        }
-
-        private void SaveCollectionToFile(string path)
-        {
-            using StreamWriter file = File.CreateText(path);
-            JsonSerializer serializer = new();
-            serializer.Serialize(file, Cards);
-        }
-    }
-
+    /// <summary>
+    /// Scryfall API card data object
+    /// </summary>
     public class CardData
     {
         [JsonProperty("data")]
@@ -279,38 +209,17 @@ namespace MTG.Scryfall
         [JsonProperty("total_cards")]
         public int TotalCards { get; set; }
     }
+    /// <summary>
+    /// Scryfall API card set data object
+    /// </summary>
     public class CardSetData
     {
         [JsonProperty("data")]
         public List<CardSet> Data { get; set; }
     }
-
-    public class ListBoxCollectionCard : CollectionCard, INotifyPropertyChanged
-    {
-        public ListBoxCollectionCard(Card card, int count = 1) : base(card, count) { Visible = true; }
-        public ListBoxCollectionCard(CollectionCard card, int count = 1) : base(card.Card, count) { Visible = true; }
-
-        private bool visible = true;
-
-        public override int Count
-        {
-            get => base.Count;
-            set
-            {
-                base.Count = value;
-                OnPropertyChanged();
-            }
-        }
-        public bool Visible { get => visible; set { visible = value; OnPropertyChanged(); } }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
-
+    /// <summary>
+    /// Scryfall API card face object
+    /// </summary>
     public class CardFace
     {
         [JsonProperty("colors")]
