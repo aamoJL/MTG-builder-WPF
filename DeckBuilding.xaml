@@ -50,7 +50,8 @@
                                 </ComboBox>
                             </StackPanel>
                         </Border>
-                        <ListBox x:Name="CardSetImageListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" VirtualizingPanel.IsVirtualizing="False">
+                        <TextBlock Text="Loading..." Visibility="Collapsed" x:Name="CardSetLoadingTextBlock"/>
+                        <ListBox x:Name="CardSetImageListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" VirtualizingPanel.IsVirtualizing="False" Visibility="Visible">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
@@ -94,7 +95,8 @@
                                 <Button Content="&gt;&gt;" Padding="10, 5, 10 ,5" Margin="5,7.5,7,0" Click="CollectionMoveCardRightButton_Click"/>
                             </StackPanel>
                         </Border>
-                        <ListBox x:Name="SecondaryCollectionListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
+                        <TextBlock Text="Loading..." Visibility="Collapsed" x:Name="SecondaryCollectionLoadingTextBlock"/>
+                        <ListBox x:Name="SecondaryCollectionListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Visibility="Visible">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
@@ -103,7 +105,7 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Vertical">
-                                        <Image Source="{Binding Card.PrimaryFaceURI}" Width="250" Margin="5" MouseRightButtonUp="CardImage_MouseRightButtonUp"/>
+                                        <Image Source="{Binding Card.PrimaryFace}" Width="250" Margin="5" MouseRightButtonUp="CardImage_MouseRightButtonUp"/>
                                         <TextBlock Text="{Binding Count}" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"/>
                                     </StackPanel>
                                 </DataTemplate>
@@ -142,7 +144,7 @@
                 <ListBox x:Name="PrimaryCollectionListBox" Margin="0,0,0,5" SelectionChanged="PrimaryCollectionListBox_SelectionChanged">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
-                            <EventSetter Event="MouseEnter" Handler="CollectionCard_MouseEnter" />
+                            <EventSetter Event="MouseEnter" Handler="PrimaryCollectionCard_MouseEnter" />
                             <EventSetter Event="MouseLeave" Handler="CollectionCard_MouseLeave" />
                         </Style>
                     </ListBox.ItemContainerStyle>

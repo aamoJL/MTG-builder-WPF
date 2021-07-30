@@ -5,9 +5,11 @@ using Newtonsoft.Json;
 using Svg;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace MTG_builder
@@ -21,6 +23,7 @@ namespace MTG_builder
         public static readonly string SetIconPath = "SetIcons/";
         public static readonly string ResourcesPath = "Resources/";
         public static readonly string SetListsFileName = "Scryfall_sets.json";
+        public static readonly string CardImagePath = "Resources/CardImages/";
 
         /// <summary>
         /// Create directories if they do not exist
@@ -29,6 +32,7 @@ namespace MTG_builder
         {
             _ = Directory.CreateDirectory(CollectionsPath);
             _ = Directory.CreateDirectory(SetIconPath);
+            _ = Directory.CreateDirectory(CardImagePath);
         }
         /// <summary>
         /// Returns list of collection cards from a file
@@ -101,8 +105,7 @@ namespace MTG_builder
                 string path = $"{SetIconPath}{set.Code}.png";
                 if (!File.Exists(path))
                 {
-                    using WebClient webClient = new();
-                    webClient.DownloadFile(set.IconSvgUri, $"{SetIconPath}temp.svg");
+                    DownloadFile(set.IconSvgUri, $"{SetIconPath}temp.svg");
                     SvgDocument svgDocument = SvgDocument.Open($"{SetIconPath}temp.svg");
                     svgDocument.Width = 32;
                     svgDocument.Height = 32;
@@ -114,6 +117,30 @@ namespace MTG_builder
                     }
                     catch (Exception) { }
                 }
+            }
+        }
+        public static void DownloadFile(string path, string url)
+        {
+            using WebClient webClient = new();
+            try
+            {
+                webClient.DownloadFile(url, Path.GetFullPath(path));
+            }
+            catch (WebException)
+            {
+                throw;
+            }
+        }
+        public static async Task DownloadFileAsync(string path, string url)
+        {
+            try
+            {
+                using WebClient webClient = new();
+                await webClient.DownloadFileTaskAsync(new Uri(url), path);
+            }
+            catch (WebException)
+            {
+                throw;
             }
         }
 

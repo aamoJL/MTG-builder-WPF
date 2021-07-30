@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
 namespace MTG.Scryfall
@@ -39,6 +40,17 @@ namespace MTG.Scryfall
             }
 
             return cards;
+        }
+
+        public static async Task DownloadCardImages(List<Card> cards)
+        {
+            List<Task> tasks = new();
+            foreach (Card card in cards)
+            {
+                tasks.Add(card.DownloadCardImagesAsync());
+            }
+
+            await Task.WhenAll(tasks);
         }
     }
 
@@ -77,9 +89,53 @@ namespace MTG.Scryfall
         public Dictionary<string, string> Legalities { get; set; }
 
         [JsonIgnore]
-        public BitmapImage PrimaryFace => new(new Uri(PrimaryFaceURI));
+        public BitmapImage PrimaryFace
+        {
+            get
+            {
+                string filePath = $"{IO.CardImagePath}{Id}.png";
+                try
+                {
+                    return File.Exists(filePath) ? (new(new Uri(Path.GetFullPath(filePath)))) : (new(new Uri(PrimaryFaceURI)));
+                }
+                catch (Exception)
+                {
+                    try
+                    {
+                        IO.DownloadFile(filePath, PrimaryFaceURI);
+                        return new(new Uri(Path.GetFullPath(filePath)));
+                    }
+                    catch (Exception)
+                    {
+                        return new(new Uri(PrimaryFaceURI));
+                    }
+                }
+            }
+        }
         [JsonIgnore]
-        public BitmapImage SecondaryFace => new(new Uri(SecondaryFaceURI));
+        public BitmapImage SecondaryFace
+        {
+            get
+            {
+                string filePath = $"{IO.CardImagePath}{Id}back.png";
+                try
+                {
+                    return File.Exists(filePath) ? (new(new Uri(Path.GetFullPath(filePath)))) : (new(new Uri(SecondaryFaceURI)));
+                }
+                catch (Exception)
+                {
+                    try
+                    {
+                        IO.DownloadFile(filePath, SecondaryFaceURI);
+                        return new(new Uri(Path.GetFullPath(filePath)));
+                    }
+                    catch (Exception)
+                    {
+                        return new(new Uri(SecondaryFaceURI));
+                    }
+                }
+            }
+        }
         [JsonIgnore]
         public string PrimaryFaceURI
         {
@@ -114,11 +170,24 @@ namespace MTG.Scryfall
         }
         [JsonIgnore]
         public bool HasTwoFaces => ImageUris == null && CardFaces != null;
+        [JsonIgnore]
         public CardColor GetColorIdentity => ColorIdentity.Count == 0 ? CardColor.Colorless : ColorIdentity.Count > 1 ? CardColor.Multicolor : ColorIdentity[0];
 
         //Gameplay
         [JsonIgnore]
         public bool Tapped { get; set; }
+
+        public async Task DownloadCardImagesAsync()
+        {
+            if (!File.Exists($"{IO.CardImagePath}{Id}.png"))
+            {
+                await IO.DownloadFileAsync($"{IO.CardImagePath}{Id}.png", PrimaryFaceURI);
+            }
+            if (HasTwoFaces && !File.Exists($"{IO.CardImagePath}{Id}back.png"))
+            {
+                await IO.DownloadFileAsync($"{IO.CardImagePath}{Id}back.png", SecondaryFaceURI);
+            }
+        }
 
         [JsonConverter(typeof(StringEnumConverter))]
         public enum CardColor

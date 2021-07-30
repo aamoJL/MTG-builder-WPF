@@ -58,7 +58,8 @@ namespace MTG
             // Set card set listbox items to selected set's cards
             CardSet set = CardSetsComboBox.SelectedItem as CardSet;
             List<Card> cards = ScryfallAPI.FetchScryfallSetCards(set.SearchUri);
-            CardSetImageListBox.ItemsSource = cards;
+
+            LoadCardSetImagesAsync(cards);
         }
         private void CardCollectionsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -70,7 +71,7 @@ namespace MTG
 
             if (collectionCards != null)
             {
-                secondaryCardCollection.ChangeCollection(collectionCards, collectionName);
+                LoadSecondaryCardCollectionImagesAsync(collectionCards, collectionName);
             }
             else { secondaryCardCollection.ChangeCollection(new List<CollectionCard>(), ""); }
 
@@ -133,7 +134,7 @@ namespace MTG
                 }
             }
         }
-        private void CollectionCard_MouseEnter(object sender, MouseEventArgs e)
+        private void PrimaryCollectionCard_MouseEnter(object sender, MouseEventArgs e)
         {
             // Show display image of the card when mouse is over it
             if (((ListBoxItem)sender).DataContext is CollectionCard collectionCard)
@@ -316,6 +317,38 @@ namespace MTG
 
             toCollection.AddCard(card);
             fromCollection.RemoveCard(card);
+        }
+
+        private async void LoadSecondaryCardCollectionImagesAsync(List<CollectionCard> collectionCards, string collectionName)
+        {
+            SecondaryCollectionListBox.Visibility = Visibility.Hidden;
+            SecondaryCollectionLoadingTextBlock.Visibility = Visibility.Visible;
+
+            List<Card> cards = new();
+
+            foreach (CollectionCard collectionCard in collectionCards)
+            {
+                cards.Add(collectionCard.Card);
+            }
+
+            await ScryfallAPI.DownloadCardImages(cards);
+
+            SecondaryCollectionListBox.Visibility = Visibility.Visible;
+            SecondaryCollectionLoadingTextBlock.Visibility = Visibility.Collapsed;
+
+            secondaryCardCollection.ChangeCollection(collectionCards, collectionName);
+        }
+        private async void LoadCardSetImagesAsync(List<Card> cards)
+        {
+            CardSetImageListBox.Visibility = Visibility.Hidden;
+            CardSetLoadingTextBlock.Visibility = Visibility.Visible;
+
+            await ScryfallAPI.DownloadCardImages(cards);
+
+            CardSetImageListBox.Visibility = Visibility.Visible;
+            CardSetLoadingTextBlock.Visibility = Visibility.Collapsed;
+
+            CardSetImageListBox.ItemsSource = cards;
         }
     }
 }
