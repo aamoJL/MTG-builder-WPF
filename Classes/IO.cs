@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using Svg;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
@@ -34,6 +33,7 @@ namespace MTG_builder
             _ = Directory.CreateDirectory(SetIconPath);
             _ = Directory.CreateDirectory(CardImagePath);
         }
+
         /// <summary>
         /// Returns list of collection cards from a file
         /// </summary>
@@ -44,6 +44,7 @@ namespace MTG_builder
             JsonSerializer serializer = new();
             return (List<CollectionCard>)serializer.Deserialize(file, typeof(List<CollectionCard>));
         }
+
         /// <summary>
         /// Returns list of card sets from a file
         /// </summary>
@@ -62,6 +63,7 @@ namespace MTG_builder
                 return new List<CardSet>();
             }
         }
+
         /// <summary>
         /// Returns array of json file names from a path
         /// </summary>
@@ -77,6 +79,7 @@ namespace MTG_builder
 
             return fileNames;
         }
+
         /// <summary>
         /// Downloads and saves set list file using Scryfall API
         /// </summary>
@@ -85,6 +88,7 @@ namespace MTG_builder
             using WebClient client = new();
             client.DownloadFile(ScryfallAPI.SetListsUrl, $"{ResourcesPath}{SetListsFileName}");
         }
+
         /// <summary>
         /// Saves given json object to a file
         /// </summary>
@@ -94,6 +98,7 @@ namespace MTG_builder
             JsonSerializer serializer = new();
             serializer.Serialize(file, jsonObject);
         }
+
         /// <summary>
         /// Downloads card set icons using Scryfall API and converts them from SVG to PNG files
         /// </summary>
@@ -105,32 +110,42 @@ namespace MTG_builder
                 string path = $"{SetIconPath}{set.Code}.png";
                 if (!File.Exists(path))
                 {
-                    DownloadFile(set.IconSvgUri, $"{SetIconPath}temp.svg");
-                    SvgDocument svgDocument = SvgDocument.Open($"{SetIconPath}temp.svg");
-                    svgDocument.Width = 32;
-                    svgDocument.Height = 32;
-                    using System.Drawing.Bitmap smallBitmap = svgDocument.Draw();
-
-                    try
+                    if (DownloadFile($"{SetIconPath}temp.svg", set.IconSvgUri))
                     {
-                        smallBitmap.Save(path, ImageFormat.Png);
+                        SvgDocument svgDocument = SvgDocument.Open($"{SetIconPath}temp.svg");
+                        svgDocument.Width = 32;
+                        svgDocument.Height = 32;
+                        using System.Drawing.Bitmap smallBitmap = svgDocument.Draw();
+
+                        try
+                        {
+                            smallBitmap.Save(path, ImageFormat.Png);
+                        }
+                        catch (Exception) { }
                     }
-                    catch (Exception) { }
                 }
             }
         }
-        public static void DownloadFile(string path, string url)
+
+        /// <summary>
+        /// Downloads file from url to path
+        /// </summary>
+        /// <returns>True if the file was downloaded</returns>
+        public static bool DownloadFile(string path, string url)
         {
             using WebClient webClient = new();
             try
             {
                 webClient.DownloadFile(url, Path.GetFullPath(path));
+                return true;
             }
             catch (WebException)
             {
+                return false;
                 throw;
             }
         }
+
         public static async Task DownloadFileAsync(string path, string url)
         {
             try
@@ -153,6 +168,7 @@ namespace MTG_builder
             openFileDialog.InitialDirectory = Path.GetFullPath(CombinedPath);
             return openFileDialog;
         }
+
         public static SaveFileDialog SaveFileDialog(string relativePath, string defaultName)
         {
             // Configure save file dialog box
@@ -163,6 +179,7 @@ namespace MTG_builder
             dialog.Filter = "Text documents (.json)|*.json"; // Filter files by extension
             return dialog;
         }
+
         public static MessageBoxResult UnsavedChangesDialog()
         {
             // Ask if user wants to save last collection

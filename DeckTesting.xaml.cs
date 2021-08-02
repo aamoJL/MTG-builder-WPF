@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace MTG_builder
 {
@@ -22,6 +23,7 @@ namespace MTG_builder
         private readonly MatrixTransform canvasTransform = new();
         private readonly CardCollection deckOneCollection = new(); // Selected deck
         private readonly CardCollection deckTwoCollection = new(); // Selected deck
+        private readonly string counterImagePath = "Resources/PlusCounter.png";
 
         private FrameworkElement mouseDragObject;
         private Point mouseDragPivot;
@@ -399,6 +401,33 @@ namespace MTG_builder
                 DeckSideListBox.ItemsSource = collectionCards;
             }
         }
+        private void PlusCounterButton_Click(object sender, RoutedEventArgs e)
+        {
+            Image counterImage = new();
+            counterImage.Height = 48;
+            counterImage.Source = new BitmapImage(new Uri(Path.GetFullPath(counterImagePath)));
+
+            counterImage.RenderTransformOrigin = new(.5f, .5f);
+
+            MatrixTransform matrixTransform = new(canvasTransform.Matrix);
+
+            // Set card position
+            double x = Canvas.GetLeft(DeckOnePile);
+            double y = Canvas.GetTop(DeckOnePile);
+            Canvas.SetTop(counterImage, y);
+            Canvas.SetLeft(counterImage, x + ((DeckOnePile.ActualWidth + 20) * canvasTransform.Matrix.M11));
+
+            counterImage.RenderTransform = matrixTransform;
+
+            counterImage.MouseLeftButtonDown += DeckCardImage_MouseLeftButtonDown;
+            counterImage.MouseRightButtonDown += CounterImage_MouseRightButtonDown;
+
+            _ = GameCanvas.Children.Add(counterImage);
+        }
+        private void CounterImage_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            GameCanvas.Children.Remove(sender as UIElement);
+        }
         #endregion
 
         private void PlayerLife_MouseWheel(object sender, MouseWheelEventArgs e)
@@ -551,6 +580,5 @@ namespace MTG_builder
             // Set the behavior to return visuals at all z-order levels.
             return HitTestResultBehavior.Continue;
         }
-
     }
 }

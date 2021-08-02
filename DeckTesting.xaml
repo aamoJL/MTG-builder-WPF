@@ -98,16 +98,12 @@
                     <Button Grid.Column="1" Click="DeckTwoShuffleButton_Click" Margin="2.5,0,2.5,0" Content="Shuffle" />
                     <Button Grid.Column="2" Click="DeckTwoDrawSelectedButton_Click" Margin="2.5,0,0,0" Content="Draw selected" />
                 </Grid>
-                <Grid Grid.Row="4">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Content="Side cards"/>
-                    <Button Grid.Row="1" Content="Open..." Margin="0,0,0,5" Click="DeckSideOpenButton_Click"/>
-                    <ListBox Grid.Row="2" x:Name="DeckSideListBox">
+                <DockPanel Grid.Row="4">
+                    <Label DockPanel.Dock="Top" Content="Side cards"/>
+                    <Button DockPanel.Dock="Top" Content="Open..." Margin="0,0,0,5" Click="DeckSideOpenButton_Click"/>
+                    <Button DockPanel.Dock="Bottom" Content="+1/+1 Counter" Margin="0,0,0,0" Click="PlusCounterButton_Click"/>
+                    <Button DockPanel.Dock="Bottom" Content="Draw side card" Margin="0,5,0,5" Click="DeckSideDrawButton_Click"/>
+                    <ListBox x:Name="DeckSideListBox">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -116,8 +112,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Grid.Row="3" Content="Draw side card" Margin="0,5,0,0" Click="DeckSideDrawButton_Click"/>
-                </Grid>
+                </DockPanel>
             </Grid>
         </Grid>
     </DockPanel>
