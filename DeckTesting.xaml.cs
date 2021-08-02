@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Security.Cryptography;
 
 namespace MTG_builder
 {
@@ -552,12 +553,29 @@ namespace MTG_builder
 
         private static void ShuffleDeck(List<Card> deck)
         {
+            RNGCryptoServiceProvider rng = new();
+
+            // http://csharphelper.com/blog/2014/08/use-a-cryptographic-random-number-generator-in-c/
+            int GetRNGInt(int min, int max)
+            {
+                uint scale = uint.MaxValue;
+                while (scale == uint.MaxValue)
+                {
+                    byte[] fourBytes = new byte[4];
+                    rng.GetBytes(fourBytes);
+
+                    scale = BitConverter.ToUInt32(fourBytes, 0);
+                }
+
+                return (int)(min + (max - min) * (scale / (double)uint.MaxValue));
+            }
+
             // Fisher Yates shuffle
             int count = deck.Count;
             int last = count - 1;
             for (int i = 0; i < last; ++i)
             {
-                int r = new Random().Next(i, count);
+                int r = GetRNGInt(i, count);
                 Card tmp = deck[i];
                 deck[i] = deck[r];
                 deck[r] = tmp;
