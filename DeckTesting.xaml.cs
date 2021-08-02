@@ -206,7 +206,7 @@ namespace MTG_builder
             {
                 if (e.ClickCount == 2)
                 {
-                    if (img.DataContext is Card card)
+                    if (img.DataContext is DeckTestingCard card)
                     {
                         SwapCardFace(img, card);
                     }
@@ -226,19 +226,19 @@ namespace MTG_builder
             // Rotate card
             if (sender is Image card)
             {
-                if ((card.DataContext as Card).Tapped)
+                if ((card.DataContext as DeckTestingCard).Tapped)
                 {
                     Matrix m = (card.RenderTransform as MatrixTransform).Matrix;
                     m.RotatePrepend(-90);
                     (card.RenderTransform as MatrixTransform).Matrix = m;
-                    (card.DataContext as Card).Tapped = false;
+                    (card.DataContext as DeckTestingCard).Tapped = false;
                 }
                 else
                 {
                     Matrix m = (card.RenderTransform as MatrixTransform).Matrix;
                     m.RotatePrepend(90);
                     (card.RenderTransform as MatrixTransform).Matrix = m;
-                    (card.DataContext as Card).Tapped = true;
+                    (card.DataContext as DeckTestingCard).Tapped = true;
                 }
             }
         }
@@ -516,7 +516,7 @@ namespace MTG_builder
             Image cardImage = new();
             cardImage.Height = 250;
             cardImage.Source = card.PrimaryFace;
-            cardImage.DataContext = card;
+            cardImage.DataContext = new DeckTestingCard(card);
 
             cardImage.RenderTransformOrigin = new(.5f, .5f);
 
@@ -581,11 +581,20 @@ namespace MTG_builder
                 deck[r] = tmp;
             }
         }
-        private static void SwapCardFace(Image img, Card card)
+        private static void SwapCardFace(Image img, DeckTestingCard card)
         {
-            if (card.HasTwoFaces)
+            if (card.Card.HasTwoFaces)
             {
-                img.Source = img.Source.ToString() == card.CardFaces[0].ImageUris["normal"] ? card.SecondaryFace : card.PrimaryFace;
+                if (card.Side == DeckTestingCard.CardSide.Front)
+                {
+                    card.Side = DeckTestingCard.CardSide.Back;
+                    img.Source = card.Card.SecondaryFace;
+                }
+                else
+                {
+                    card.Side = DeckTestingCard.CardSide.Front;
+                    img.Source = card.Card.PrimaryFace;
+                }
             }
         }
 

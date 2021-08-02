@@ -161,6 +161,7 @@ namespace MTG
             UnsavedChanges = false;
         }
     }
+
     /// <summary>
     /// Card object for CardCollection class
     /// </summary>
@@ -175,6 +176,7 @@ namespace MTG
             Count = count;
         }
     }
+
     /// <summary>
     /// CollectionCard that can be used in ListBoxes
     /// </summary>
@@ -201,6 +203,25 @@ namespace MTG
         private void OnPropertyChanged(string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+
+    public class DeckTestingCard
+    {
+        public DeckTestingCard(Card card)
+        {
+            Card = card;
+            Tapped = false;
+            Side = CardSide.Front;
+        }
+
+        public Card Card { get; private set; }
+        public bool Tapped { get; set; }
+        public CardSide Side { get; set; }
+
+        public enum CardSide
+        {
+            Front, Back
         }
     }
 }

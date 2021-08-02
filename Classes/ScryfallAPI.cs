@@ -173,10 +173,6 @@ namespace MTG.Scryfall
         [JsonIgnore]
         public CardColor GetColorIdentity => ColorIdentity.Count == 0 ? CardColor.Colorless : ColorIdentity.Count > 1 ? CardColor.Multicolor : ColorIdentity[0];
 
-        //Gameplay
-        [JsonIgnore]
-        public bool Tapped { get; set; }
-
         public async Task DownloadCardImagesAsync()
         {
             if (!File.Exists($"{IO.CardImagePath}{Id}.png"))
@@ -200,6 +196,7 @@ namespace MTG.Scryfall
             common, uncommon, rare, special, mythic, bonus
         }
     }
+
     /// <summary>
     /// MTG Card set using Scryfall API
     /// </summary>
@@ -224,7 +221,7 @@ namespace MTG.Scryfall
             get
             {
                 string path = File.Exists($"{IO.SetIconPath}{Code}.png") ? $"{IO.SetIconPath}{Code}.png" : "";
-                if(path == "") { return null; }
+                if (path == "") { return null; }
                 BitmapImage img = new(new Uri(Path.GetFullPath(path)));
 
                 return img;
@@ -264,6 +261,7 @@ namespace MTG.Scryfall
             return Enum.GetValues(typeof(CardSetType)).Cast<CardSetType>().ToArray();
         }
     }
+
     /// <summary>
     /// Scryfall API card data object
     /// </summary>
@@ -278,6 +276,7 @@ namespace MTG.Scryfall
         [JsonProperty("total_cards")]
         public int TotalCards { get; set; }
     }
+
     /// <summary>
     /// Scryfall API card set data object
     /// </summary>
@@ -286,6 +285,7 @@ namespace MTG.Scryfall
         [JsonProperty("data")]
         public List<CardSet> Data { get; set; }
     }
+
     /// <summary>
     /// Scryfall API card face object
     /// </summary>
