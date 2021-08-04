@@ -180,10 +180,10 @@ namespace MTG_builder
             return dialog;
         }
 
-        public static MessageBoxResult UnsavedChangesDialog()
+        public static MessageBoxResult UnsavedChangesDialog(string message = "Do you want to save changes?")
         {
             // Ask if user wants to save last collection
-            string messageBoxText = "Do you want to save changes?";
+            string messageBoxText = message;
             string caption = "Save?";
             MessageBoxButton button = MessageBoxButton.YesNoCancel;
             MessageBoxImage icon = MessageBoxImage.Warning;

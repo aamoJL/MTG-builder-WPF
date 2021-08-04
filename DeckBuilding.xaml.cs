@@ -39,6 +39,48 @@ namespace MTG
 
             // Set cardset type combobox's selected item to "Expansion"
             CardSetTypeComboBox.SelectedIndex = 1;
+
+            Closing += DeckBuilding_Closing;
+        }
+
+        private void DeckBuilding_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (primaryCardCollection.UnsavedChanges)
+            {
+                MessageBoxResult message = IO.UnsavedChangesDialog($"Do you want to save {primaryCardCollection.Name}?");
+                switch (message)
+                {
+                    case MessageBoxResult.Cancel:
+                        e.Cancel = true;
+                        break;
+                    case MessageBoxResult.Yes:
+                        primaryCardCollection.Save();
+                        break;
+                    case MessageBoxResult.No:
+                    case MessageBoxResult.None:
+                    case MessageBoxResult.OK:
+                    default:
+                        break;
+                }
+            }
+            if (secondaryCardCollection.UnsavedChanges)
+            {
+                MessageBoxResult message = IO.UnsavedChangesDialog($"Do you want to save {secondaryCardCollection.Name}?");
+                switch (message)
+                {
+                    case MessageBoxResult.Cancel:
+                        e.Cancel = true;
+                        break;
+                    case MessageBoxResult.Yes:
+                        primaryCardCollection.Save();
+                        break;
+                    case MessageBoxResult.No:
+                    case MessageBoxResult.None:
+                    case MessageBoxResult.OK:
+                    default:
+                        break;
+                }
+            }
         }
 
         #region Subscribed Events
