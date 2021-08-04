@@ -132,15 +132,55 @@
                                         </Style>
                                     </Button.Style>
                                 </Button>
-                                <Button Content="Sort" Padding="5,0,5,0" Click="SecondaryCollectionSortButton_Click" Margin="10,0,0,0"/>
-                                <Button Content="Add" Padding="5,0,5,0" Margin="10,0,0,0" Click="SecondaryCollectionAddCardButton_Click"/>
+                                <Button Content="Sort" Padding="5,0,5,0" Click="SecondaryCollectionSortButton_Click" Margin="10,0,0,0">
+                                    <Button.Style>
+                                        <Style>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=CardCollectionsComboBox, Path=SelectedIndex}" Value="-1">
+                                                    <Setter Property="Button.IsEnabled" Value="False"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                                <Button Content="Add" Padding="5,0,5,0" Margin="10,0,0,0" Click="SecondaryCollectionAddCardButton_Click">
+                                    <Button.Style>
+                                        <Style>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=CardCollectionsComboBox, Path=SelectedIndex}" Value="-1">
+                                                    <Setter Property="Button.IsEnabled" Value="False"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
                             </StackPanel>
                         </Border>
                         <Border DockPanel.Dock="Left" BorderThickness="0,0,1,0" BorderBrush="#FFABADB3" Margin="0,0,0,0" Padding="5,5,5,6">
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                <Button Content="&lt;&lt;" Padding="10, 5, 10 ,5" Margin="5,0,7,7.5" Click="CollectionMoveCardLeftButton_Click"/>
+                                <Button Content="&lt;&lt;" Padding="10, 5, 10 ,5" Margin="5,0,7,7.5" Click="CollectionMoveCardLeftButton_Click">
+                                    <Button.Style>
+                                        <Style>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=CardCollectionsComboBox, Path=SelectedIndex}" Value="-1">
+                                                    <Setter Property="Button.IsEnabled" Value="False"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
                                 <TextBlock Text="Move" TextAlignment="Center"/>
-                                <Button Content="&gt;&gt;" Padding="10, 5, 10 ,5" Margin="5,7.5,7,0" Click="CollectionMoveCardRightButton_Click"/>
+                                <Button Content="&gt;&gt;" Padding="10, 5, 10 ,5" Margin="5,7.5,7,0" Click="CollectionMoveCardRightButton_Click">
+                                    <Button.Style>
+                                        <Style>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=CardCollectionsComboBox, Path=SelectedIndex}" Value="-1">
+                                                    <Setter Property="Button.IsEnabled" Value="False"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
                             </StackPanel>
                         </Border>
                         <TextBlock Text="Loading..." Visibility="Collapsed" x:Name="SecondaryCollectionLoadingTextBlock"/>
