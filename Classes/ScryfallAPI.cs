@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -52,6 +53,16 @@ namespace MTG.Scryfall
 
             await Task.WhenAll(tasks);
         }
+        public static async Task DownloadCardImages(List<CollectionCard> cards)
+        {
+            List<Task> tasks = new();
+            foreach (CollectionCard card in cards)
+            {
+                tasks.Add(card.Card.DownloadCardImagesAsync());
+            }
+
+            await Task.WhenAll(tasks);
+        }
     }
 
     /// <summary>
@@ -96,19 +107,19 @@ namespace MTG.Scryfall
                 string filePath = $"{IO.CardImagePath}{Id}.png";
                 try
                 {
-                    return File.Exists(filePath) ? (new(new Uri(Path.GetFullPath(filePath)))) : (new(new Uri(PrimaryFaceURI)));
+                    if (File.Exists(filePath))
+                    {
+                        return new(new Uri(Path.GetFullPath(filePath)));
+                    }
+                    else
+                    {
+                        _ = IO.DownloadFile(filePath, PrimaryFaceURI);
+                        return new(new Uri(Path.GetFullPath(filePath)));
+                    }
                 }
                 catch (Exception)
                 {
-                    try
-                    {
-                        IO.DownloadFile(filePath, PrimaryFaceURI);
-                        return new(new Uri(Path.GetFullPath(filePath)));
-                    }
-                    catch (Exception)
-                    {
-                        return new(new Uri(PrimaryFaceURI));
-                    }
+                    return new(new Uri(PrimaryFaceURI));
                 }
             }
         }
@@ -120,54 +131,28 @@ namespace MTG.Scryfall
                 string filePath = $"{IO.CardImagePath}{Id}back.png";
                 try
                 {
-                    return File.Exists(filePath) ? (new(new Uri(Path.GetFullPath(filePath)))) : (new(new Uri(SecondaryFaceURI)));
+                    if (File.Exists(filePath))
+                    {
+                        return new(new Uri(Path.GetFullPath(filePath)));
+                    }
+                    else
+                    {
+                        _ = IO.DownloadFile(filePath, SecondaryFaceURI);
+                        return new(new Uri(Path.GetFullPath(filePath)));
+                    }
                 }
                 catch (Exception)
                 {
-                    try
-                    {
-                        IO.DownloadFile(filePath, SecondaryFaceURI);
-                        return new(new Uri(Path.GetFullPath(filePath)));
-                    }
-                    catch (Exception)
-                    {
-                        return new(new Uri(SecondaryFaceURI));
-                    }
+                    return new(new Uri(SecondaryFaceURI));
                 }
             }
         }
         [JsonIgnore]
-        public string PrimaryFaceURI
-        {
-            get
-            {
-                if (ImageUris == null)
-                {
-                    if (CardFaces.Count > 1 && CardFaces[0].ImageUris != null)
-                    {
-                        return CardFaces[0].ImageUris["normal"];
-                    }
-
-                    return null;
-                }
-                else
-                {
-                    return ImageUris["normal"];
-                }
-            }
-        }
+        public string PrimaryFaceURI => ImageUris == null
+                    ? CardFaces.Count > 1 && CardFaces[0].ImageUris != null ? CardFaces[0].ImageUris["normal"] : null
+                    : ImageUris["normal"];
         [JsonIgnore]
-        public string SecondaryFaceURI
-        {
-            get
-            {
-                if (!HasTwoFaces) { return null; }
-                else
-                {
-                    return CardFaces[1].ImageUris["normal"];
-                }
-            }
-        }
+        public string SecondaryFaceURI => !HasTwoFaces ? null : CardFaces[1].ImageUris["normal"];
         [JsonIgnore]
         public bool HasTwoFaces => ImageUris == null && CardFaces != null;
         [JsonIgnore]

@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using MTG_builder;
 using System.Globalization;
+using System.IO;
 
 namespace MTG
 {
@@ -67,10 +68,8 @@ namespace MTG
 
             // Change secondary collection to selected collection
             string collectionName = CardCollectionsComboBox.SelectedItem.ToString();
-            secondaryCardCollection.LoadCollectionFromFile($"{IO.CollectionsPath}{collectionName}.json");
 
-            // Filter unselected colors
-            secondaryCardCollection.FilterCollection(GetSecondaryCollectionColorFilters());
+            LoadCardCollectionImagesAsync(collectionName);
         }
         private void CardSetTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -115,7 +114,7 @@ namespace MTG
                     if (card.HasTwoFaces)
                     {
                         string currentSource = img.Source.ToString(new CultureInfo("en-us"));
-                        img.Source = card.CardFaces[0].ImageUris["normal"] == currentSource ? card.SecondaryFace : card.PrimaryFace;
+                        img.Source = card.PrimaryFace.ToString(new CultureInfo("en-us")) == currentSource ? card.SecondaryFace : card.PrimaryFace;
                     }
                 }
                 else if (img.DataContext is CollectionCard collectionCard)
@@ -123,7 +122,7 @@ namespace MTG
                     if (collectionCard.Card.HasTwoFaces)
                     {
                         string currentSource = img.Source.ToString(new CultureInfo("en-us"));
-                        img.Source = collectionCard.Card.CardFaces[0].ImageUris["normal"] == currentSource ? collectionCard.Card.SecondaryFace : collectionCard.Card.PrimaryFace;
+                        img.Source = collectionCard.Card.PrimaryFace.ToString(new CultureInfo("en-us")) == currentSource ? collectionCard.Card.SecondaryFace : collectionCard.Card.PrimaryFace;
                     }
                 }
             }
@@ -314,25 +313,6 @@ namespace MTG
             fromCollection.RemoveCard(card);
         }
 
-        private async void LoadSecondaryCardCollectionImagesAsync(List<CollectionCard> collectionCards, string collectionName)
-        {
-            SecondaryCollectionListBox.Visibility = Visibility.Hidden;
-            SecondaryCollectionLoadingTextBlock.Visibility = Visibility.Visible;
-
-            List<Card> cards = new();
-
-            foreach (CollectionCard collectionCard in collectionCards)
-            {
-                cards.Add(collectionCard.Card);
-            }
-
-            await ScryfallAPI.DownloadCardImages(cards);
-
-            SecondaryCollectionListBox.Visibility = Visibility.Visible;
-            SecondaryCollectionLoadingTextBlock.Visibility = Visibility.Collapsed;
-
-            secondaryCardCollection.LoadCollection(collectionCards, collectionName);
-        }
         private async void LoadCardSetImagesAsync(List<Card> cards)
         {
             CardSetImageListBox.Visibility = Visibility.Hidden;
@@ -344,6 +324,27 @@ namespace MTG
             CardSetLoadingTextBlock.Visibility = Visibility.Collapsed;
 
             CardSetImageListBox.ItemsSource = cards;
+        }
+        private async void LoadCardCollectionImagesAsync(string collectionName)
+        {
+            SecondaryCollectionListBox.Visibility = Visibility.Hidden;
+            SecondaryCollectionLoadingTextBlock.Visibility = Visibility.Visible;
+
+            string collectionPath = $"{IO.CollectionsPath}{collectionName}.json";
+            if (File.Exists(collectionPath))
+            {
+                List<CollectionCard> collectionCards = IO.ReadCollectionFromFile(collectionPath);
+
+                await ScryfallAPI.DownloadCardImages(collectionCards);
+
+                secondaryCardCollection.LoadCollectionFromFile(collectionPath);
+
+                // Filter unselected colors
+                secondaryCardCollection.FilterCollection(GetSecondaryCollectionColorFilters());
+
+                SecondaryCollectionListBox.Visibility = Visibility.Visible;
+                SecondaryCollectionLoadingTextBlock.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

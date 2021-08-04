@@ -59,7 +59,7 @@
                             </ListBox.ItemsPanel>
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <Image Source="{Binding PrimaryFaceURI}" Width="250" Margin="5" MouseRightButtonUp="CardImage_MouseRightButtonUp"/>
+                                    <Image Source="{Binding PrimaryFace}" Width="250" Margin="5" MouseRightButtonUp="CardImage_MouseRightButtonUp"/>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                             <ListBox.ItemContainerStyle>
