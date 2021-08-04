@@ -18,6 +18,7 @@ namespace MTG
     {
         private readonly CardCollection primaryCardCollection = new();
         private readonly CardCollection secondaryCardCollection = new();
+        private readonly CardCollection setCardCollection = new();
 
         public DeckBuilding()
         {
@@ -27,7 +28,6 @@ namespace MTG
 
             // Subscribe to events
             primaryCardCollection.CollectionChanged += PrimaryCardCollection_CollectionChanged;
-            secondaryCardCollection.CollectionChanged += SecondaryCardCollection_CollectionChanged;
 
             // Add item sources
             PrimaryCollectionListBox.ItemsSource = primaryCardCollection.Cards;
@@ -35,6 +35,7 @@ namespace MTG
             CardSetsComboBox.ItemsSource = IO.GetCardSets();
             CardCollectionsComboBox.ItemsSource = IO.GetJsonFileNames(IO.CollectionsPath);
             CardSetTypeComboBox.ItemsSource = CardSet.GetSetTypes();
+            CardSetImageListBox.ItemsSource = setCardCollection.Cards;
 
             // Set cardset type combobox's selected item to "Expansion"
             CardSetTypeComboBox.SelectedIndex = 1;
@@ -45,9 +46,6 @@ namespace MTG
         {
             // Change primary collection name to textblock
             CollectionTextBlock.Text = primaryCardCollection.Name != "" ? primaryCardCollection.Name : "Unsaved Collection";
-        }
-        private void SecondaryCardCollection_CollectionChanged(object sender, EventArgs e)
-        {
         }
         #endregion
 
@@ -249,7 +247,8 @@ namespace MTG
         }
         private void SecondaryCollectionColorFilterCheck_Click(object sender, RoutedEventArgs e)
         {
-            secondaryCardCollection.FilterCollection(GetSecondaryCollectionColorFilters());
+            secondaryCardCollection.FilterCollection(GetCollectionColorFilters());
+            setCardCollection.FilterCollection(GetCollectionColorFilters());
         }
         private void SecondaryCollectionSaveButton_Click(object sender, RoutedEventArgs e)
         {
@@ -278,7 +277,7 @@ namespace MTG
         /// Returns active color filters for the secondary card collection
         /// </summary>
         /// <returns>List of active color filters</returns>
-        private List<Card.CardColor> GetSecondaryCollectionColorFilters()
+        private List<Card.CardColor> GetCollectionColorFilters()
         {
             List<Card.CardColor> colorFilters = new();
             if (WhiteCheck.IsChecked == false) { colorFilters.Add(Card.CardColor.W); }
@@ -320,10 +319,19 @@ namespace MTG
 
             await ScryfallAPI.DownloadCardImages(cards);
 
+            // Change set cards to collection cards
+            List<CollectionCard> collectionCards = new();
+
+            for (int i = 0; i < cards.Count; i++)
+            {
+                collectionCards.Add(new ListBoxCollectionCard(cards[i]));
+            }
+
+            setCardCollection.LoadCollection(collectionCards, "");
+            setCardCollection.FilterCollection(GetCollectionColorFilters());
+
             CardSetImageListBox.Visibility = Visibility.Visible;
             CardSetLoadingTextBlock.Visibility = Visibility.Collapsed;
-
-            CardSetImageListBox.ItemsSource = cards;
         }
         private async void LoadCardCollectionImagesAsync(string collectionName)
         {
@@ -340,7 +348,7 @@ namespace MTG
                 secondaryCardCollection.LoadCollectionFromFile(collectionPath);
 
                 // Filter unselected colors
-                secondaryCardCollection.FilterCollection(GetSecondaryCollectionColorFilters());
+                secondaryCardCollection.FilterCollection(GetCollectionColorFilters());
 
                 SecondaryCollectionListBox.Visibility = Visibility.Visible;
                 SecondaryCollectionLoadingTextBlock.Visibility = Visibility.Collapsed;

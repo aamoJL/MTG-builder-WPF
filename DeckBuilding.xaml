@@ -100,12 +100,17 @@
                             </ListBox.ItemsPanel>
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <Image Source="{Binding PrimaryFace}" Width="250" Margin="5" MouseRightButtonUp="CardImage_MouseRightButtonUp"/>
+                                    <Image Source="{Binding Card.PrimaryFace}" Width="250" Margin="5" MouseRightButtonUp="CardImage_MouseRightButtonUp"/>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                             <ListBox.ItemContainerStyle>
                                 <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                                     <EventSetter Event="MouseDoubleClick" Handler="SecondaryCollectionCardImage_MouseDoubleClick"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Visible}" Value="False">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
                                 </Style>
                             </ListBox.ItemContainerStyle>
                         </ListBox>
