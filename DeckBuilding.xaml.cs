@@ -85,7 +85,7 @@ namespace MTG
         private void PrimaryCollectionListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Change collection image display to selected card's image
-            PrimaryCollectionSelectedImage.Source = ((CollectionCard)PrimaryCollectionListBox.SelectedItem)?.Card.PrimaryFace;
+            PrimaryCollectionHoverImage.Source = ((CollectionCard)PrimaryCollectionListBox.SelectedItem)?.Card.PrimaryFace;
         }
         private void SecondaryCollectionCardImage_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -136,7 +136,7 @@ namespace MTG
         private void CollectionCard_MouseLeave(object sender, MouseEventArgs e)
         {
             // Hide card display image when mouse leaves the card
-            PrimaryCollectionHoverImage.Source = null;
+            PrimaryCollectionHoverImage.Source = ((CollectionCard)PrimaryCollectionListBox.SelectedItem)?.Card.PrimaryFace;
         }
         #endregion
 
