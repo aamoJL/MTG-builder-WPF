@@ -445,12 +445,12 @@ namespace MTG_builder
         {
             if (deckNumber == 1)
             {
-                deckOneCollection.ChangeCollection(cards, name);
+                deckOneCollection.LoadCollection(cards, name);
                 GetDeckCards(1);
             }
             else if (deckNumber == 2)
             {
-                deckTwoCollection.ChangeCollection(cards, name);
+                deckTwoCollection.LoadCollection(cards, name);
                 GetDeckCards(2);
             }
             else { return; }

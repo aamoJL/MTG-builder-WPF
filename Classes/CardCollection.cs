@@ -16,6 +16,10 @@ namespace MTG
     public class CardCollection
     {
         public string Name { get; set; }
+        /// <summary>
+        /// Returns True if the collection was loaded from a file
+        /// </summary>
+        public bool Loaded => filePath != "";
         public bool UnsavedChanges { get; private set; }
         public ObservableCollection<ListBoxCollectionCard> Cards { get; }
         public event EventHandler CollectionChanged;
@@ -76,19 +80,6 @@ namespace MTG
                 }
             }
         }
-        public void ChangeCollection(List<CollectionCard> cards, string name)
-        {
-            Name = name;
-            Cards.Clear();
-            for (int i = 0; i < cards.Count; i++)
-            {
-                Cards.Add(new ListBoxCollectionCard(cards[i], cards[i].Count));
-            }
-
-            UnsavedChanges = false;
-
-            CollectionChanged?.Invoke(this, EventArgs.Empty);
-        }
         public void SaveAsWithDialog(string defaultName = "NewCollection")
         {
             SaveFileDialog saveFileDialog = IO.SaveFileDialog(IO.CollectionsPath, defaultName);
@@ -121,16 +112,29 @@ namespace MTG
         }
         public void Sort()
         {
-            ChangeCollection(Cards.OrderBy(x => x.Card.GetColorIdentity).ThenBy(x => x.Card.CMC).Cast<CollectionCard>().ToList(), Name);
+            LoadCollection(Cards.OrderBy(x => x.Card.GetColorIdentity).ThenBy(x => x.Card.CMC).Cast<CollectionCard>().ToList(), Name);
             UnsavedChanges = true;
         }
-        public void ChangeCollectionFromFile(string path)
+        public void LoadCollection(List<CollectionCard> cards, string name)
+        {
+            Name = name;
+            Cards.Clear();
+            for (int i = 0; i < cards.Count; i++)
+            {
+                Cards.Add(new ListBoxCollectionCard(cards[i], cards[i].Count));
+            }
+
+            UnsavedChanges = false;
+
+            CollectionChanged?.Invoke(this, EventArgs.Empty);
+        }
+        public void LoadCollectionFromFile(string path)
         {
             List<CollectionCard> cards = IO.ReadCollectionFromFile(path);
             string collectionsName = Path.GetFileNameWithoutExtension(path);
             filePath = path;
 
-            ChangeCollection(cards, collectionsName);
+            LoadCollection(cards, collectionsName);
         }
         public void FilterCollection(List<Card.CardColor> colorFilters)
         {

@@ -67,13 +67,7 @@ namespace MTG
 
             // Change secondary collection to selected collection
             string collectionName = CardCollectionsComboBox.SelectedItem.ToString();
-            List<CollectionCard> collectionCards = IO.ReadCollectionFromFile($"{IO.CollectionsPath}{collectionName}.json");
-
-            if (collectionCards != null)
-            {
-                LoadSecondaryCardCollectionImagesAsync(collectionCards, collectionName);
-            }
-            else { secondaryCardCollection.ChangeCollection(new List<CollectionCard>(), ""); }
+            secondaryCardCollection.LoadCollectionFromFile($"{IO.CollectionsPath}{collectionName}.json");
 
             // Filter unselected colors
             secondaryCardCollection.FilterCollection(GetSecondaryCollectionColorFilters());
@@ -197,7 +191,7 @@ namespace MTG
 
             if (openFileDialog.ShowDialog() == true)
             {
-                primaryCardCollection.ChangeCollectionFromFile(openFileDialog.FileName);
+                primaryCardCollection.LoadCollectionFromFile(openFileDialog.FileName);
             }
         }
         private void PrimaryCollectionNewButton_Click(object sender, RoutedEventArgs e)
@@ -220,7 +214,7 @@ namespace MTG
                 }
             }
 
-            primaryCardCollection.ChangeCollection(new List<CollectionCard>(), "");
+            primaryCardCollection.LoadCollection(new List<CollectionCard>(), "");
         }
         private void PrimaryCollectionSaveButton_Click(object sender, RoutedEventArgs e)
         {
@@ -260,12 +254,13 @@ namespace MTG
         }
         private void SecondaryCollectionSaveButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!secondaryCardCollection.Loaded) { return; }
             secondaryCardCollection.Save();
         }
         private void CollectionMoveCardRightButton_Click(object sender, RoutedEventArgs e)
         {
             int selectedIndex = PrimaryCollectionListBox.SelectedIndex;
-            if (selectedIndex == -1 || secondaryCardCollection.Name == "") { return; }
+            if (selectedIndex == -1 || secondaryCardCollection.Loaded) { return; }
 
             // Move card from primary to secondary collection
             SwapCardBetweenCollections(primaryCardCollection, secondaryCardCollection, selectedIndex);
@@ -336,7 +331,7 @@ namespace MTG
             SecondaryCollectionListBox.Visibility = Visibility.Visible;
             SecondaryCollectionLoadingTextBlock.Visibility = Visibility.Collapsed;
 
-            secondaryCardCollection.ChangeCollection(collectionCards, collectionName);
+            secondaryCardCollection.LoadCollection(collectionCards, collectionName);
         }
         private async void LoadCardSetImagesAsync(List<Card> cards)
         {

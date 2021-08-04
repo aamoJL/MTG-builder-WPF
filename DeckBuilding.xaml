@@ -75,7 +75,17 @@
                         <Border DockPanel.Dock="Top" BorderThickness="0,0,0,1" BorderBrush="#FFABADB3" Margin="0,0,0,0" Padding="5,5,5,6">
                             <StackPanel Orientation="Horizontal">
                                 <ComboBox DockPanel.Dock="Top" Width="250" x:Name="CardCollectionsComboBox" SelectionChanged="CardCollectionsComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="0,0,5,0" DropDownOpened="CardCollectionsComboBox_DropDownOpened"/>
-                                <Button Content="Save" Padding="5,0,5,0" Click="SecondaryCollectionSaveButton_Click"/>
+                                <Button Content="Save" Padding="5,0,5,0" Click="SecondaryCollectionSaveButton_Click">
+                                    <Button.Style>
+                                        <Style>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=CardCollectionsComboBox, Path=SelectedIndex}" Value="-1">
+                                                    <Setter Property="Button.IsEnabled" Value="False"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
                                 <Button Content="Sort" Padding="5,0,5,0" Click="SecondaryCollectionSortButton_Click" Margin="10,0,0,0"/>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
                                     <CheckBox x:Name="WhiteCheck" Content="White" Click="SecondaryCollectionColorFilterCheck_Click" IsChecked="True" Margin="0,0,5,0" />
