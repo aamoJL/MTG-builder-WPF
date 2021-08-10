@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -28,17 +27,20 @@ namespace MTG.Scryfall
             List<Card> cards = new();
 
             using WebClient wc = new();
-
-            string json = wc.DownloadString(searchUri);
-            CardData cardData = JsonConvert.DeserializeObject<CardData>(json);
-            cards.AddRange(cardData.Data);
-
-            while (cardData.HasMore)
+            try
             {
-                json = wc.DownloadString(cardData.NextPage);
-                cardData = JsonConvert.DeserializeObject<CardData>(json);
+                string json = wc.DownloadString(searchUri);
+                CardData cardData = JsonConvert.DeserializeObject<CardData>(json);
                 cards.AddRange(cardData.Data);
+
+                while (cardData.HasMore)
+                {
+                    json = wc.DownloadString(cardData.NextPage);
+                    cardData = JsonConvert.DeserializeObject<CardData>(json);
+                    cards.AddRange(cardData.Data);
+                }
             }
+            catch (Exception) { }
 
             return cards;
         }

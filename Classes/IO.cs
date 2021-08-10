@@ -142,7 +142,6 @@ namespace MTG_builder
             catch (WebException)
             {
                 return false;
-                throw;
             }
         }
 
@@ -155,7 +154,6 @@ namespace MTG_builder
             }
             catch (WebException)
             {
-                throw;
             }
         }
 
