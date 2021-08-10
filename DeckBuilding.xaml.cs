@@ -300,7 +300,7 @@ namespace MTG
         private void CollectionMoveCardRightButton_Click(object sender, RoutedEventArgs e)
         {
             int selectedIndex = PrimaryCollectionListBox.SelectedIndex;
-            if (selectedIndex == -1 || secondaryCardCollection.Loaded) { return; }
+            if (selectedIndex == -1 || !secondaryCardCollection.Loaded) { return; }
 
             // Move card from primary to secondary collection
             SwapCardBetweenCollections(primaryCardCollection, secondaryCardCollection, selectedIndex);
