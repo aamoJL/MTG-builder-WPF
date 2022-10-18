@@ -3,5 +3,5 @@ Deprecated deck building application for MTG
 
 Updated WinUI3 application --> WIP []()
 
-# Technologies
+# Frameworks
 * C# WPF
